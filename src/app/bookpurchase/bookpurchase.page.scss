@@ -1,0 +1,56 @@
+.fullpage {
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+}
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 10px;
+    font-size: 50px;
+    font-family: "Lalezar", cursive;
+}
+.card {
+    height: 30em;
+}
+ion-card {
+    border-radius: 25px;
+    display: flex;
+}
+.cententheight {
+    position: relative;
+    top: 3em;
+}
+.carda {
+    background-color: white;
+    color: blue;
+    font-family: "Lalezar", cursive;
+}
+.cardb {
+    background-color: white;
+    color: black;
+}
+.line-input {
+    margin-bottom: 0 !important;
+    ion-item {
+        --border-color: transparent !important;
+        --highlight-height: 0;
+        border: 1px solid black;
+        border-radius: 4px;
+
+        &.item-has-focus {
+            border: 1px solid var(--ion-color-primary);
+        }
+
+        ion-label {
+            color: #807e7e !important;
+            font-weight: 300;
+            font-size: 1rem !important;
+        }
+    }
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Lalezar&display=swap");
