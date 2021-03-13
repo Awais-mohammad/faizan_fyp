@@ -20,7 +20,7 @@ export class AppComponent {
 
   ) {
     this.initializeApp();
-    this.gotospashscreen()
+    //  this.gotospashscreen()
   }
 
   gotospashscreen() {

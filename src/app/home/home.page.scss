@@ -44,6 +44,29 @@ ion-card:hover {
   font-family: "Nanum Gothic", sans-serif;
 }
 
+.line-input {
+  margin-bottom: 10px !important;
+
+  ion-item {
+    --border-color: transparent !important;
+    --highlight-height: 0;
+    --background: white !important;
+    border: 1px solid black;
+    --color: white;
+    border-radius: 4px;
+
+    &.item-has-focus {
+      border: 1px solid var(--ion-color-primary);
+    }
+
+    ion-label {
+      color: black !important;
+      font-weight: 300;
+      font-size: 1rem !important;
+    }
+  }
+}
+
 ///ANIMATIONS
 .fade-in {
   animation: fadeIn ease 2s;
@@ -88,14 +111,11 @@ ion-card:hover {
   }
 }
 
-ion-item {
-  --ion-background-color: white !important;
-}
-.item,
-.list,
-.item-content,
-.item-complex {
-  --ion-background-color: transparent !important;
+ion-input {
+  color: black;
+  ::placeholder {
+    color: black !important;
+  }
 }
 
 @-ms-keyframes fadeIn {
@@ -107,6 +127,9 @@ ion-item {
   }
 }
 
+ion-icon {
+  color: black;
+}
 //vertical centre
 
 .center {
@@ -120,25 +143,6 @@ ion-item {
   width: 40em;
   padding: 15px;
   border-radius: 25px;
-}
-.line-input {
-  margin-bottom: 0 !important;
-  ion-item {
-    --border-color: transparent !important;
-    --highlight-height: 0;
-    border: 1px solid black;
-    border-radius: 4px;
-
-    &.item-has-focus {
-      border: 1px solid var(--ion-color-primary);
-    }
-
-    ion-label {
-      color: #807e7e !important;
-      font-weight: 300;
-      font-size: 1rem !important;
-    }
-  }
 }
 
 .loginpage {

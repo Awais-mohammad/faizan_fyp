@@ -43,7 +43,7 @@
               <ion-card (click)="openLoginpage('hod')" class="card">
                 <img class="img imgheight" src="https://portal.cust.pk/images/as.jpg" alt="">
                 <ion-card-content class="cententheight">
-                  STAKEHOLDER LOGIN
+                  ACCOUNTANT LOGIN
                 </ion-card-content>
               </ion-card>
             </ion-col>
@@ -57,7 +57,7 @@
           <ion-row>
             <ion-col size="6">
               <ion-card (click)="openLoginpage('student')" class="card">
-                <img  class="img imgheight" src="../../assets/logo.jpg" alt="">
+                <img class="img imgheight" src="../../assets/logo.jpg" alt="">
                 <ion-card-content class="cententheight">
                   STUDENT LOGIN
                 </ion-card-content>
@@ -86,7 +86,7 @@
               <ion-card (click)="openLoginpage('hod')" class="card">
                 <img class="img imgheight" src="https://portal.cust.pk/images/as.jpg" alt="">
                 <ion-card-content class="cententheight">
-                  STAKEHOLDER LOGIN
+                  ACCOUNTANT LOGIN
                 </ion-card-content>
               </ion-card>
             </ion-col>
@@ -100,7 +100,7 @@
           <ion-row>
             <ion-col size="8" offset="2.3">
               <ion-card (click)="openLoginpage('student')" class="card">
-                <img  class="img imgheight" src="../../assets/logo.jpg" alt="">
+                <img class="img imgheight" src="../../assets/logo.jpg" alt="">
                 <ion-card-content class="cententheight">
                   STUDENT LOGIN
                 </ion-card-content>
@@ -129,7 +129,7 @@
               <ion-card (click)="openLoginpage('hod')" class="card">
                 <img class="img imgheight" src="https://portal.cust.pk/images/as.jpg" alt="">
                 <ion-card-content class="cententheight">
-                  STAKEHOLDER LOGIN
+                  ACCOUNTANT LOGIN
                 </ion-card-content>
               </ion-card>
             </ion-col>
@@ -150,25 +150,28 @@
     </div>
 
     <div class="center">
-      <ion-label class="login">{{loginFor}} LOGIN</ion-label>
-      <ion-list class="line-input">
-        <ion-item>
-          <ion-icon slot="start" name="mail-outline"></ion-icon>
-          <ion-input type="email" [(ngModel)]="email" placeholder="enter email"></ion-input>
-        </ion-item>
+      <ion-label style="color: black;" class="login">{{loginFor}} LOGIN</ion-label>
 
-      </ion-list>
-      <ion-list class="line-input">
-        <ion-item>
-          <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
-          <ion-input type="{{inputtyp}}" [(ngModel)]="password" placeholder="enter password"></ion-input>
-          <ion-icon (click)="passwordtoggler()" *ngIf="!showhidepass" name="eye-outline"></ion-icon>
-          <ion-icon (click)="passwordtoggler()" *ngIf="showhidepass" name="eye-off-outline"></ion-icon>
-        </ion-item>
 
-      </ion-list>
-      <ion-button (click)="loginvalidator()" expand="block" shape="round" mode="ios" color="dark"> LOGIN
-        <ion-icon name="arrow-forward-outline"></ion-icon>
+      <ion-item color="none" style="--background: white;border: 2px solid black;">
+        <ion-icon color="light" slot="start" name="mail-outline"></ion-icon>
+        <ion-input type="email" [(ngModel)]="email" placeholder="enter email"></ion-input>
+      </ion-item>
+
+      <div style="height: 10px;">
+
+      </div>
+
+      <ion-item color="none" style="--background: white;border: 2px solid black;" class="line-input">
+        <ion-icon color="light" slot="start" name="lock-closed-outline">
+        </ion-icon>
+        <ion-input type="{{inputtyp}}" [(ngModel)]="password" placeholder="enter password"></ion-input>
+        <ion-icon color="light" (click)="passwordtoggler()" *ngIf="!showhidepass" name="eye-outline"></ion-icon>
+        <ion-icon color="light" (click)="passwordtoggler()" *ngIf="showhidepass" name="eye-off-outline"></ion-icon>
+      </ion-item>
+
+      <ion-button (click)="loginvalidator()" expand="block" shape="round" mode="ios" color="none"
+        style="background: black;color: white;"> LOGIN
       </ion-button>
     </div>
   </div>
