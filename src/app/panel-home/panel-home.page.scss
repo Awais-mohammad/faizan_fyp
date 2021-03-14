@@ -27,83 +27,7 @@
     bottom: 2.3em;
     right: 4px;
 }
-.content {
-    padding: 10px;
-}
-.card {
-    height: 9em;
-}
-ion-card {
-    border-radius: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.carda {
-    background-color: #faa499;
-    background-image: linear-gradient(319deg, #faa499 0%, #f7dd85 37%, #ffc55c 100%);
-}
-.cardb {
-    background-color: #f42b03;
-    background-image: linear-gradient(316deg, #f42b03 0%, #ffbe0b 74%);
-}
-.cardc {
-    background-color: #ee8e6b;
-    background-image: linear-gradient(315deg, #ee8e6b 0%, #ef6da0 74%);
-}
-.cardd {
-    background-color: #fffcf9;
-    background-image: linear-gradient(315deg, #fffcf9 0%, #ffd166 74%);
-}
-.cententheight {
-    color: white;
-    font-family: "Saira Semi Condensed", sans-serif;
-    font-size: 20px;
-}
-.payroll {
-    text-align: center;
-    font-family: "Yusei Magic", sans-serif;
-    font-size: 30px;
-}
 
-.line-input {
-    margin-bottom: 0 !important;
-    ion-item {
-        --border-color: transparent !important;
-        --highlight-height: 0;
-        border: 1px solid black;
-        border-radius: 4px;
-
-        &.item-has-focus {
-            border: 1px solid var(--ion-color-primary);
-        }
-
-        ion-label {
-            color: #807e7e !important;
-            font-weight: 300;
-            font-size: 1rem !important;
-        }
-    }
-}
-
-payrollform {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-}
-.removecardborder {
-    box-shadow: none !important;
-    background-color: white;
-}
-.table {
-    color: black;
-}
-
-th {
-    border: 2px solid black;
-    padding: 2px;
-    font-family: "Dosis", sans-serif;
-}
 .dosisfont {
     font-family: "Dosis", sans-serif;
 }
@@ -189,4 +113,29 @@ ion-item:hover {
     font-size: 18px;
     font-family: text;
     color: black;
+}
+
+/////////////////////////////////////////////////////////
+///////////////////END OF SIDE menu//////////////
+//////////////////////////////
+
+/////////////////////////////////////////////////////////
+///////////////////MAIN CONTENT//////////////
+//////////////////////////////
+
+ion-card {
+    background-color: white;
+    max-width: 40em;
+    transition: 1s ease-in;
+}
+ion-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    border-radius: 25px;
+
+    img {
+        border-radius: 25px;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        transition: 1s ease-in;
+    }
 }

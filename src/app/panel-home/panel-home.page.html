@@ -21,10 +21,15 @@
   <div>
 
 
-    <div>
+    <div *ngIf="width > 740">
 
       <ion-grid>
         <ion-row>
+          <!--
+            //////////////////////////////////////
+                    SIDE MENU
+            /////////////////////////////////////        
+          -->
           <ion-col size="3">
 
             <div id="mySidenav" class="sidenav">
@@ -61,12 +66,83 @@
                 </ion-item>
 
 
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='payes'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="pulse"></ion-icon>
+                    FINES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item *ngIf="currentDiv!='payes'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="pulse"></ion-icon>
+                    FINES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='payes'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="card"></ion-icon>
+                    SALLERIES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item *ngIf="currentDiv!='payes'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="card"></ion-icon>
+                    SALLERIES
+                  </ion-label>
+                </ion-item>
+
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='payes'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="folder"></ion-icon>
+                    EXPENDITURE
+                  </ion-label>
+                </ion-item>
+
+                <ion-item *ngIf="currentDiv!='payes'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="folder"></ion-icon>
+                    EXPENDITURE
+                  </ion-label>
+                </ion-item>
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='payes'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="filter"></ion-icon>
+                    DEFAULTERS
+                  </ion-label>
+                </ion-item>
+
+                <ion-item *ngIf="currentDiv!='payes'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="filter"></ion-icon>
+                    DEFAULTERS
+                  </ion-label>
+                </ion-item>
+
+
+                <ion-item color="none">
+                  <ion-label color="danger" style="color: red;" class=" label">
+                    <ion-icon color="danger" name="log-out"></ion-icon>
+                    LOGOUT
+                  </ion-label>
+                </ion-item>
+
+
 
               </div>
             </div>
 
           </ion-col>
 
+          <!--
+            //////////////////////////////////////
+                    MAIN
+            /////////////////////////////////////        
+          -->
           <ion-col size="8">
 
             <div *ngIf="currentDiv == 'home'" style="color: black;padding-top: 10px;">
@@ -75,6 +151,232 @@
 
                 <p>to the Accountant services of Smart School Online</p>
               </ion-label>
+
+              <div style="display: flex;flex-wrap: wrap;margin-top: 2em;">
+                <ion-card>
+                  <ion-card-content>
+                    <div style="display: flex;">
+                      <img style="height: 15em;object-fit: contain;width: 50%;" src="../../assets/finecard.jpg" alt="">
+
+                      <div>
+
+                        <div style="text-align: center;padding-top: 15px;">
+                          <ion-title style="color: black;font-family: text;font-weight: bold;font-size: 18px;">
+                            FINE MANAGEMENT
+                          </ion-title>
+                        </div>
+
+                        <div style="text-align: center;padding-top: 15px;">
+                          <ion-label>
+                            Assign,Delete Fines Of Students,maintain a balanced Rewards and Penalty system, enjoy better
+                          </ion-label>
+
+                        </div>
+
+                        <div
+                          style="display: flex;text-align: right;align-items: flex-end;justify-content: flex-end;position: relative;top: 1em;">
+
+                          <ion-button mode='ios' color="none" style="background-color: brown;border-radius: 15px;">
+                            <p style="font-family: text;color: white;">
+                              MANAGE
+                            </p>
+                          </ion-button>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </ion-card-content>
+                </ion-card>
+
+
+                <ion-card>
+                  <ion-card-content>
+                    <div style="display: flex;">
+                      <img style="height: 15em;object-fit: contain;width: 50%;" src="../../assets/fee.png" alt="">
+
+                      <div>
+
+                        <div style="text-align: center;padding-top: 15px;">
+                          <ion-title style="color: black;font-family: text;font-weight: bold;font-size: 18px;">
+                            FEE MANAGEMENT
+                          </ion-title>
+                        </div>
+
+                        <div style="text-align: center;padding-top: 15px;">
+                          <ion-label>
+                            Assign,Delete Fines Of Students,maintain a balanced Rewards and Penalty system, enjoy better
+                          </ion-label>
+
+                        </div>
+
+                        <div
+                          style="display: flex;text-align: right;align-items: flex-end;justify-content: flex-end;position: relative;top: 1em;">
+
+                          <ion-button mode='ios' color="none" style="background-color: brown;border-radius: 15px;">
+                            <p style="font-family: text;color: white;">
+                              MANAGE
+                            </p>
+                          </ion-button>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </ion-card-content>
+                </ion-card>
+
+                <ion-card>
+                  <ion-card-content>
+                    <div style="display: flex;">
+                      <img style="height: 15em;object-fit: contain;width: 50%;" src="../../assets/teachersallery.jpg"
+                        alt="">
+
+                      <div>
+
+                        <div style="text-align: center;padding-top: 15px;">
+                          <ion-title style="color: black;font-family: text;font-weight: bold;font-size: 18px;">
+                            SALLERY MANAGEMENT
+                          </ion-title>
+                        </div>
+
+                        <div style="text-align: center;padding-top: 15px;">
+                          <ion-label>
+                            Assign,Delete Fines Of Students,maintain a balanced Rewards and Penalty system, enjoy better
+                          </ion-label>
+
+                        </div>
+
+                        <div
+                          style="display: flex;text-align: right;align-items: flex-end;justify-content: flex-end;position: relative;top: 1em;">
+
+                          <ion-button mode='ios' color="none" style="background-color: brown;border-radius: 15px;">
+                            <p style="font-family: text;color: white;">
+                              MANAGE
+                            </p>
+                          </ion-button>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </ion-card-content>
+                </ion-card>
+
+
+                <ion-card>
+                  <ion-card-content>
+                    <div style="display: flex;">
+                      <img style="height: 15em;object-fit: contain;width: 50%;" src="../../assets/expenditure.jpg"
+                        alt="">
+
+                      <div>
+
+                        <div style="text-align: center;padding-top: 15px;">
+                          <ion-title style="color: black;font-family: text;font-weight: bold;font-size: 18px;">
+                            EXPENDITURE MANAGE
+                          </ion-title>
+                        </div>
+
+                        <div style="text-align: center;padding-top: 15px;">
+                          <ion-label>
+                            Assign,Delete Fines Of Students,maintain a balanced Rewards and Penalty system, enjoy better
+                          </ion-label>
+
+                        </div>
+
+                        <div
+                          style="display: flex;text-align: right;align-items: flex-end;justify-content: flex-end;position: relative;top: 1em;">
+
+                          <ion-button mode='ios' color="none" style="background-color: brown;border-radius: 15px;">
+                            <p style="font-family: text;color: white;">
+                              MANAGE
+                            </p>
+                          </ion-button>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </ion-card-content>
+                </ion-card>
+
+
+                <ion-card>
+                  <ion-card-content>
+                    <div style="display: flex;">
+                      <img style="height: 15em;object-fit: contain;width: 50%;" src="../../assets/payrolls.png" alt="">
+
+                      <div>
+
+                        <div style="text-align: center;padding-top: 15px;">
+                          <ion-title style="color: black;font-family: text;font-weight: bold;font-size: 18px;">
+                            PAYROLL MANAGEMENT
+                          </ion-title>
+                        </div>
+
+                        <div style="text-align: center;padding-top: 15px;">
+                          <ion-label>
+                            Assign,Delete Fines Of Students,maintain a balanced Rewards and Penalty system, enjoy better
+                          </ion-label>
+
+                        </div>
+
+                        <div
+                          style="display: flex;text-align: right;align-items: flex-end;justify-content: flex-end;position: relative;top: 1em;">
+
+                          <ion-button mode='ios' color="none" style="background-color: brown;border-radius: 15px;">
+                            <p style="font-family: text;color: white;">
+                              MANAGE
+                            </p>
+                          </ion-button>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </ion-card-content>
+                </ion-card>
+
+                <ion-card>
+                  <ion-card-content>
+                    <div style="display: flex;">
+                      <img style="height: 15em;object-fit: contain;width: 50%;" src="../../assets/defaulter.png" alt="">
+
+                      <div>
+
+                        <div style="text-align: center;padding-top: 15px;">
+                          <ion-title style="color: black;font-family: text;font-weight: bold;font-size: 18px;">
+                            DEFAULTERS MANAGEMENT
+                          </ion-title>
+                        </div>
+
+                        <div style="text-align: center;padding-top: 15px;">
+                          <ion-label>
+                            Assign,Delete Fines Of Students,maintain a balanced Rewards and Penalty system, enjoy better
+                          </ion-label>
+
+                        </div>
+
+                        <div
+                          style="display: flex;text-align: right;align-items: flex-end;justify-content: flex-end;position: relative;top: 1em;">
+
+                          <ion-button mode='ios' color="none" style="background-color: brown;border-radius: 15px;">
+                            <p style="font-family: text;color: white;">
+                              MANAGE
+                            </p>
+                          </ion-button>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </ion-card-content>
+                </ion-card>
+
+
+              </div>
+
 
             </div>
           </ion-col>
