@@ -78,6 +78,8 @@ export class HomePage implements OnInit {
     else {
       if (this.loginFor == 'ADMIN') {
         this.login()
+      } else if (this.loginFor = 'HOD'){
+        this.Router.navigate(['admin']);
       }
       else {
         this.Router.navigate(['testpage'])

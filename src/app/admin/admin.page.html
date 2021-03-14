@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title style="font-family: 'impact';font-size:35px;margin:10px;">Admin Portal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="2">
+        <ion-card color="none" style="height: 768px;background: rgba(0, 0, 0, 0.048);">
+          <ion-item color="none" button mode="ios" style="background: white;color:black" (click) = "changeShow('requests')">
+            <div class="option">Requests</div>
+          </ion-item>
+          <ion-item color="none" button mode="ios" style="background: white;color:black" (click) = "changeShow('classes')">
+            <div class="option">Classes</div>
+          </ion-item>
+          <ion-item color="none" button mode="ios" style="background: white;color:black" (click) = "changeShow('teachers')">
+            <div class="option">Teachers</div>
+          </ion-item>
+          <ion-item color="none" button mode="ios" style="background: white;color:black" (click) = "changeShow('students')">
+            <div class="option">Students</div>
+          </ion-item>
+          <ion-item color="none" button mode="ios" style="background: white;color:black" (click) = "changeShow('accountants')">
+            <div class="option">Accountants</div>
+          </ion-item>
+          <ion-item color="none" button mode="ios" style="background: white;color:black" (click) = "changeShow('requests')">
+            <div class="option">Requests</div>
+          </ion-item>
+          <ion-item color="none" button mode="ios" style="background: white;color:black" (click) = "changeShow('requests')">
+            <div class="option">Requests</div>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+      <ion-col size="10">
+        <div *ngIf="toShow == 'teachers'" class="toShow">
+          <div *ngIf="subOption == '' || !subOption">
+            <ion-card color="tertiary" style="display: inline-block;max-width: 400px;" mode="ios" button (click) = "changeSub('add')">
+              <ion-icon name="add-outline" style="font-size: 100px;"></ion-icon>
+              <ion-card-header>
+                <ion-card-title>ADD TEACHER</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                Use this option to create credentials for new teachers.
+              </ion-card-content>
+            </ion-card>
+            <ion-card color="tertiary" style="display: inline-block;max-width: 400px;" mode="ios" button (click) = "changeSub('manage')">
+              <ion-icon name="server-outline" style="font-size: 100px;"></ion-icon>
+              <ion-card-header>
+                <ion-card-title>MANAGE TEACHERS</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                Use this option to modify existing teacher's status etc.
+              </ion-card-content>
+            </ion-card>
+          </div>
+          <div *ngIf="subOption == 'add'" class="toShow">
+            <ion-card mode="ios" color="none" style="background: white;width: 1000px;display:inline-block">
+              <h1 style = "font-size:40px;color:black;font-family: impact;">
+                ADD TEACHER CREDENTIALS
+              </h1>
+              <ion-item color = "none" style = "color:black;">
+                <ion-label position="fixed" >Name:</ion-label>
+                <ion-input inputmode="text" required [(ngModel)]="name"></ion-input>
+              </ion-item>
+              <ion-item color = "none" style = "color:black;">
+                <ion-label position="fixed" >Phone:</ion-label>
+                <ion-input inputmode="numeric" required [(ngModel)]="phone"></ion-input>
+              </ion-item>
+              <ion-item color = "none" style = "color:black;">
+                <ion-label position="fixed" >Email:</ion-label>
+                <ion-input inputmode="email" required [(ngModel)]="email"></ion-input>
+              </ion-item>
+              <ion-item color = "none" style = "color:black;">
+                <ion-label position="fixed">Password:</ion-label>
+                <ion-input type="password" inputmode="text" required [(ngModel)]="password"></ion-input>
+              </ion-item>
+              <ion-item color = "none" style = "color:black;">
+                <ion-label position="fixed">Salary:</ion-label>
+                <ion-input inputmode="numeric" type="number" required [(ngModel)]="salary"></ion-input>
+              </ion-item>
+              <ion-button size = "full" fill = "clear" style = "font-family: impact;font-size:40px;" (click) = "addTeacher()">Submit</ion-button>
+            </ion-card>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
