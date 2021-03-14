@@ -30,6 +30,7 @@ export class PanelHomePage implements OnInit {
   amount: number;
   userID: string;
   userData: any;
+  currentDiv: string = 'home';
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -141,7 +142,7 @@ export class PanelHomePage implements OnInit {
   generateslip() {
     this.router.navigate(['feeinvoice'])
   }
-  gotobills(){
+  gotobills() {
     this.router.navigate(['billsmanagement'])
   }
 
