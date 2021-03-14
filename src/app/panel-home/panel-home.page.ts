@@ -139,19 +139,26 @@ export class PanelHomePage implements OnInit {
     })
   }
 
-  generateslip() {
-    this.router.navigate(['feeinvoice'])
-  }
-  gotobills() {
-    this.router.navigate(['billsmanagement'])
+  goToPage(name: string) {
+    this.router.navigate([name])
   }
 
-  managefines() {
-    this.router.navigate(['bookpurchase'])
+  gotoDiv(divName: string) {
+    this.currentDiv = divName
   }
-  sallerypage() {
-    this.router.navigate(['salleries'])
-  }
+  // generateslip() {
+  //   this.router.navigate(['feeinvoice'])
+  // }
+  // gotobills() {
+  //   this.router.navigate(['billsmanagement'])
+  // }
+
+  // managefines() {
+  //   this.router.navigate(['bookpurchase'])
+  // }
+  // sallerypage() {
+  //   this.router.navigate(['salleries'])
+  // }
   ngOnInit() {
     const authsub = this.firebaseauth.authState.subscribe(user => {
       this.userID = user.uid;
