@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuth } from 'angularfire2/auth'; import { AlertController, iosTransitionAnimation } from '@ionic/angular';
+import { proxyMethods } from '@ionic/angular/directives/proxies-utils';
+
 
 @Component({
   selector: 'app-admin',
@@ -12,6 +14,7 @@ export class AdminPage implements OnInit {
   constructor(
     private firestore: AngularFirestore,
     private afAuth: AngularFireAuth,
+    public alertController: AlertController
   ) { }
 
   toShow: string = "teachers";
@@ -24,8 +27,9 @@ export class AdminPage implements OnInit {
   teachers: any[] = [];
   teacher: string;
   classes: any[] = [];
-  reg:number;
+  reg: number;
   students: any[] = [];
+  accountants: any[] = [];
 
   addClass() {
     if (this.name && this.name != "" && this.name.length > 3) {
@@ -45,6 +49,36 @@ export class AdminPage implements OnInit {
         }).catch(err => {
           alert(err.message);
         })
+      }
+    }
+  }
+  
+  addAccountant() {
+    if (this.name && this.name != "" && this.name.length > 3) {
+      if (this.phone && this.phone != "" && this.phone.length > 9) {
+        if (this.email && this.email != "" && this.email.length > 7) {
+          if (this.password && this.password != "" && this.password.length > 5) {
+            if (this.salary) {
+              this.afAuth.auth.createUserWithEmailAndPassword(this.email, this.password).then(value => {
+                const uid = value.user.uid;
+                const name = this.name;
+                const phone = this.phone;
+                const email = this.email;
+                const salary = this.salary;
+                this.firestore.collection('accountants').doc(uid).set({
+                  name, uid, phone, email, salary,
+                }).then(dat => {
+                  alert("Accountant ADDED!");
+                  this.subOption = "";
+                }).catch(err => {
+                  alert(err.message);
+                })
+              }).catch(err => {
+                alert(err.message);
+              })
+            }
+          }
+        }
       }
     }
   }
@@ -109,11 +143,58 @@ export class AdminPage implements OnInit {
     }
   }
 
+  async sendWarning(uid) {
+    const prompt = await this.alertController.create({
+      header: "Warning",
+      mode: "ios",
+      backdropDismiss: true,
+      inputs: [
+        {
+          name: 'message',
+          placeholder: 'Enter warning message here',
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log(data);
+          }
+        },
+        {
+          text: 'Send',
+          handler: data => {
+            let post = {
+              uid: uid,
+              msg: data.message,
+              from: 'Admin',
+            }
+            this.firestore.collection('notifications').add(post).then(dat => {
+              alert("Warning Sent!");
+            })
+            console.log(data.message);
+          }
+        }
+      ]
+    });
+    await prompt.present()
+  }
+
   removeStudent(teacher: any) {
     console.log("..." + teacher);
     this.firestore.collection("students").doc(teacher.uid).delete().then(data => {
       alert("STUDENT Removed");
       this.fetchStudents();
+    }).catch(data => {
+      alert(data.message);
+    });
+  }
+
+  removeAccountant(teacher: any) {
+    console.log("..." + teacher);
+    this.firestore.collection("accountants").doc(teacher.uid).delete().then(data => {
+      alert("Accountant Removed");
+      this.fetchTeachers();
     }).catch(data => {
       alert(data.message);
     });
@@ -148,6 +229,17 @@ export class AdminPage implements OnInit {
         this.students.push(element.data());
       });
       console.log(this.students);
+    })
+  }
+
+  fetchAccountants() {
+    this.accountants = [];
+    console.log(":");
+    this.firestore.collection('accountants').get().forEach(data => {
+      data.docs.forEach(element => {
+        this.accountants.push(element.data());
+      });
+      console.log(this.accountants);
     })
   }
 
@@ -186,6 +278,7 @@ export class AdminPage implements OnInit {
     this.fetchTeachers();
     this.fetchClasses();
     this.fetchStudents();
+    this.fetchAccountants();
   }
 
 }
