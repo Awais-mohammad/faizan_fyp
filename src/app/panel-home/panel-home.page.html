@@ -47,7 +47,7 @@
                   </ion-label>
                 </ion-item>
 
-                <ion-item *ngIf="currentDiv!='home'" color="none">
+                <ion-item (click)="gotoDiv('home')" *ngIf="currentDiv!='home'" color="none">
                   <ion-label class="a label">
                     <ion-icon name="home"></ion-icon>
                     HOME
@@ -70,29 +70,28 @@
                 </ion-item>
 
 
-                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='payes'" color="none">
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='fines'" color="none">
                   <ion-label style="color: skyblue;font-weight: bold;" class="a">
                     <ion-icon name="pulse"></ion-icon>
                     FINES
                   </ion-label>
                 </ion-item>
 
-                <ion-item *ngIf="currentDiv!='payes'" color="none">
+                <ion-item (click)="gotoDiv('fines')" *ngIf="currentDiv!='fines'" color="none">
                   <ion-label class="a label">
                     <ion-icon name="pulse"></ion-icon>
                     FINES
                   </ion-label>
                 </ion-item>
 
-                <ion-item (click)="goToPage('')" style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='payes'"
-                  color="none">
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='sallery'" color="none">
                   <ion-label style="color: skyblue;font-weight: bold;" class="a">
                     <ion-icon name="card"></ion-icon>
                     SALLERIES
                   </ion-label>
                 </ion-item>
 
-                <ion-item *ngIf="currentDiv!='payes'" color="none">
+                <ion-item (click)="gotoDiv('sallery')" *ngIf="currentDiv!='sallery'" color="none">
                   <ion-label class="a label">
                     <ion-icon name="card"></ion-icon>
                     SALLERIES
@@ -100,14 +99,14 @@
                 </ion-item>
 
 
-                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='payes'" color="none">
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='expenditure'" color="none">
                   <ion-label style="color: skyblue;font-weight: bold;" class="a">
                     <ion-icon name="folder"></ion-icon>
                     EXPENDITURE
                   </ion-label>
                 </ion-item>
 
-                <ion-item *ngIf="currentDiv!='payes'" color="none">
+                <ion-item (click)="gotoDiv('expenditure')" *ngIf="currentDiv!='expenditure'" color="none">
                   <ion-label class="a label">
                     <ion-icon name="folder"></ion-icon>
                     EXPENDITURE
@@ -443,21 +442,457 @@
                 </ion-item>
 
 
-                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='payes'" color="none">
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='fines'" color="none">
                   <ion-label style="color: skyblue;font-weight: bold;" class="a">
                     <ion-icon name="pulse"></ion-icon>
                     FINES
                   </ion-label>
                 </ion-item>
 
-                <ion-item *ngIf="currentDiv!='payes'" color="none">
+                <ion-item (click)="gotoDiv('fines')" *ngIf="currentDiv!='fines'" color="none">
                   <ion-label class="a label">
                     <ion-icon name="pulse"></ion-icon>
                     FINES
                   </ion-label>
                 </ion-item>
 
-                <ion-item (click)="goToPage('')" style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='payes'"
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='sallery'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="card"></ion-icon>
+                    SALLERIES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('sallery')" *ngIf="currentDiv!='sallery'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="card"></ion-icon>
+                    SALLERIES
+                  </ion-label>
+                </ion-item>
+
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='expenditure'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="folder"></ion-icon>
+                    EXPENDITURE
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('expenditure')" *ngIf="currentDiv!='expenditure'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="folder"></ion-icon>
+                    EXPENDITURE
+                  </ion-label>
+                </ion-item>
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='payes'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="filter"></ion-icon>
+                    DEFAULTERS
+                  </ion-label>
+                </ion-item>
+
+                <ion-item *ngIf="currentDiv!='payes'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="filter"></ion-icon>
+                    DEFAULTERS
+                  </ion-label>
+                </ion-item>
+
+
+                <ion-item color="none">
+                  <ion-label color="danger" style="color: red;" class=" label">
+                    <ion-icon color="danger" name="log-out"></ion-icon>
+                    LOGOUT
+                  </ion-label>
+                </ion-item>
+
+
+
+              </div>
+            </div>
+
+          </ion-col>
+
+
+          <ion-col size="8">
+            <div style="display: flex;justify-content: center;align-items: center;text-align: center;">
+              <ion-card mode="ios" color="none" style="background: white;width: 50em;">
+                <h1 style="font-size:40px;color:black;font-family: impact;text-align: center;">
+                  ADD A PAYROLL
+                </h1>
+                <div style="max-width: 5000px;">
+                  <ion-item color="none" style="color:black;">
+                    <ion-label position="float">MONTH:</ion-label>
+                    <ion-input [(ngModel)]='month' inputmode="text" required></ion-input>
+                  </ion-item>
+                  <ion-item color="none" style="color:black;">
+                    <ion-label position="float">AMOUNT:</ion-label>
+                    <ion-input [(ngModel)]='payrollamount' inputmode="numeric" required></ion-input>
+                  </ion-item>
+                  <ion-item *ngIf="userData" color="none" style="color:black;">
+                    <ion-label position="float">ISSUED BY:</ion-label>
+                    <ion-input value="{{userData.Df.sn.proto.mapValue.fields.name.stringValue}}" required></ion-input>
+                  </ion-item>
+                  <ion-item *ngIf="userData" color="none" style="color:black;">
+                    <ion-label position="float">CONTACT EMAIL:</ion-label>
+                    <ion-input value="{{userData.Df.sn.proto.mapValue.fields.email.stringValue}}" inputmode="email"
+                      required>
+                    </ion-input>
+                  </ion-item>
+                  <ion-item color="none" style="color:black;">
+                    <ion-label position="float">CREATED:</ion-label>
+                    <ion-input value="{{date}}" type="text" inputmode="text" required></ion-input>
+                  </ion-item>
+
+                  <ion-button (click)="checkanduploadpayroll()" size="full" fill="clear"
+                    style="font-family: impact;font-size:40px;">
+                    Submit</ion-button>
+                </div>
+              </ion-card>
+            </div>
+
+            <div>
+              <h1 style="font-size:40px;color:black;font-family: impact;text-align: center;">
+                ADDED/AVAILABLE PAYROLLS
+              </h1>
+
+              <div style="display: flex;flex-wrap: wrap;" *ngIf="payroll">
+                <ion-card *ngFor="let item of payroll" mode="ios" color="none" style="background: white;width: 50em;">
+                  <div style="max-width: 5000px;">
+                    <ion-item color="none" style="color:black;">
+                      <ion-label position="float">MONTH:</ion-label>
+                      <ion-label>
+                        {{item.month}}
+                      </ion-label>
+                    </ion-item>
+                    <ion-item color="none" style="color:black;">
+                      <ion-label position="float">AMOUNT:</ion-label>
+                      <ion-label>
+                        {{item.Amount}}
+                      </ion-label>
+                    </ion-item>
+                    <ion-item *ngIf="userData" color="none" style="color:black;">
+                      <ion-label position="float">ISSUED BY:</ion-label>
+                      <ion-label>
+                        {{item.UploadedBy}}
+                      </ion-label>
+                    </ion-item>
+                    <ion-item *ngIf="userData" color="none" style="color:black;">
+                      <ion-label position="float">CONTACT EMAIL:</ion-label>
+                      <ion-label>
+                        {{item.email}}
+                      </ion-label>
+
+                    </ion-item>
+
+                    <ion-button (click)="removePayroll(item.docID)" color="danger" size="full" fill="clear"
+                      style="font-family: impact;font-size:40px;">
+                      DELETE</ion-button>
+                  </div>
+                </ion-card>
+              </div>
+
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </div>
+
+    <!--
+  ///////////////////////////////////////////
+FINES FOR STUDENTS
+  /////////////////////////////
+-->
+
+    <div *ngIf="currentDiv == 'fines'">
+      <ion-grid>
+        <ion-row>
+          <!--
+            //////////////////////////////////////
+                    SIDE MENU
+            /////////////////////////////////////        
+          -->
+          <ion-col size="3">
+
+            <div id="mySidenav" class="sidenav">
+
+              <div style="padding-left: 8px;padding-right: 8px;">
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='home'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a ">
+                    <ion-icon name="home"></ion-icon>
+                    HOME
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('home')" *ngIf="currentDiv!='home'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="home"></ion-icon>
+                    HOME
+                  </ion-label>
+                </ion-item>
+
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='payes'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="wallet"></ion-icon>
+                    PAYES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('payes')" *ngIf="currentDiv!='payes'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="wallet"></ion-icon>
+                    PAYES
+                  </ion-label>
+                </ion-item>
+
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='fines'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="pulse"></ion-icon>
+                    FINES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('fines')" *ngIf="currentDiv!='fines'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="pulse"></ion-icon>
+                    FINES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='sallery'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="card"></ion-icon>
+                    SALLERIES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('sallery')" *ngIf="currentDiv!='sallery'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="card"></ion-icon>
+                    SALLERIES
+                  </ion-label>
+                </ion-item>
+
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='expenditure'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="folder"></ion-icon>
+                    EXPENDITURE
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('expenditure')" *ngIf="currentDiv!='expenditure'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="folder"></ion-icon>
+                    EXPENDITURE
+                  </ion-label>
+                </ion-item>
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='payes'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="filter"></ion-icon>
+                    DEFAULTERS
+                  </ion-label>
+                </ion-item>
+
+                <ion-item *ngIf="currentDiv!='payes'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="filter"></ion-icon>
+                    DEFAULTERS
+                  </ion-label>
+                </ion-item>
+
+
+                <ion-item color="none">
+                  <ion-label color="danger" style="color: red;" class=" label">
+                    <ion-icon color="danger" name="log-out"></ion-icon>
+                    LOGOUT
+                  </ion-label>
+                </ion-item>
+
+
+
+              </div>
+            </div>
+
+          </ion-col>
+
+          <ion-col size="8">
+            <div style="display: flex;justify-content: center;align-items: center;text-align: center;">
+              <ion-card mode="ios" color="none" style="background: white;width: 50em;">
+                <h1 style="font-size:40px;color:black;font-family: impact;text-align: center;">
+                  ADD A FINE
+                </h1>
+                <div style="max-width: 5000px;">
+                  <ion-item color="none" style="color:black;">
+                    <ion-label position="float">STUDENT NAME:</ion-label>
+                    <ion-input [(ngModel)]='studentname' inputmode="text" required></ion-input>
+                  </ion-item>
+                  <ion-item color="none" style="color:black;">
+                    <ion-label position="float">AMOUNT:</ion-label>
+                    <ion-input [(ngModel)]='fineamount' inputmode="numeric" required></ion-input>
+                  </ion-item>
+
+                  <ion-item *ngIf="userData" color="none" style="color:black;">
+                    <ion-label position="float">REG NO:</ion-label>
+                    <ion-input [(ngModel)]='regno' required>
+                    </ion-input>
+                  </ion-item>
+                  <ion-item color="none" style="color:black;">
+                    <ion-label position="float">CREATED:</ion-label>
+                    <ion-input value="{{date}}" type="text" inputmode="text" required></ion-input>
+                  </ion-item>
+
+                  <ion-button (click)="addfine()" size="full" fill="clear" style="font-family: impact;font-size:40px;">
+                    Submit</ion-button>
+                </div>
+              </ion-card>
+            </div>
+
+            <div>
+
+              <h1 style="font-size:40px;color:black;font-family: impact;text-align: center;">
+                UNPAYED FINES
+              </h1>
+
+              <table *ngIf="unpayedfines">
+                <thead>
+                  <tr>
+                    <th>Student Name</th>
+                    <th>Reg No</th>
+                    <th>AMount</th>
+                    <th>ACTON-1</th>
+                    <th>ACTON-2</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of unpayedfines" style="color: black;">
+                    <td data-column="Student Name">{{item.studentName}}</td>
+                    <td data-column="Reg No">{{item.regNo}}</td>
+                    <td data-column="AMOUNT">{{item.fineAmount}}</td>
+                    <td data-column="Twitter">
+                      <ion-button (click)="removefine(item.docID)" color="warning" mode='ios'>
+                        REMOVE
+                      </ion-button>
+                    </td>
+
+                    <td data-column="Twitter">
+                      <ion-button (click)="payFine(item.docID)" color="success" mode='ios'>
+                        PAY
+                      </ion-button>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+
+            <div>
+
+              <h1 style="font-size:40px;color:black;font-family: impact;text-align: center;">
+                PAYED FINES
+              </h1>
+
+              <table *ngIf="payedfines">
+                <thead>
+                  <tr>
+                    <th>Student Name</th>
+                    <th>Reg No</th>
+                    <th>AMount</th>
+                    <th>STATUS</th>
+                  </tr>
+
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of payedfines" style="color: black;">
+                    <td data-column="Student Name">{{item.studentName}}</td>
+                    <td data-column="Reg No">{{item.regNo}}</td>
+                    <td data-column="AMOUNT">{{item.fineAmount}}</td>
+                    <td data-column="Twitter">
+                      <ion-button color="warning" mode='ios'>
+                        {{item.status}}
+                      </ion-button>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+
+
+    </div>
+
+    <div *ngIf="currentDiv == 'sallery'">
+
+      <ion-grid>
+        <ion-row>
+          <!--
+            //////////////////////////////////////
+                    SIDE MENU
+            /////////////////////////////////////        
+          -->
+          <ion-col size="3">
+
+            <div id="mySidenav" class="sidenav">
+
+              <div style="padding-left: 8px;padding-right: 8px;">
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='home'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a ">
+                    <ion-icon name="home"></ion-icon>
+                    HOME
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('home')" *ngIf="currentDiv!='home'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="home"></ion-icon>
+                    HOME
+                  </ion-label>
+                </ion-item>
+
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='payes'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="wallet"></ion-icon>
+                    PAYES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('payes')" *ngIf="currentDiv!='payes'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="wallet"></ion-icon>
+                    PAYES
+                  </ion-label>
+                </ion-item>
+
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='fines'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="pulse"></ion-icon>
+                    FINES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item *ngIf="currentDiv!='fines'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="pulse"></ion-icon>
+                    FINES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="goToPage('')" style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='sallery'"
                   color="none">
                   <ion-label style="color: skyblue;font-weight: bold;" class="a">
                     <ion-icon name="card"></ion-icon>
@@ -465,7 +900,7 @@
                   </ion-label>
                 </ion-item>
 
-                <ion-item *ngIf="currentDiv!='payes'" color="none">
+                <ion-item *ngIf="currentDiv!='sallery'" color="none">
                   <ion-label class="a label">
                     <ion-icon name="card"></ion-icon>
                     SALLERIES
@@ -515,10 +950,254 @@
             </div>
 
           </ion-col>
+
+          <ion-col *ngIf="teachers" size="8">
+            <h1 style="font-size:40px;color:black;font-family: impact;text-align: center;">
+              REGISTERED TEACHERS
+            </h1>
+
+            <div style="display: flex;flex-wrap: wrap;">
+
+              <ion-card *ngFor="let item of teachers" style="max-width: 30em;">
+                <ion-card-content style="display: flex;flex-direction: column;">
+                  <img src="../../assets/teacheravatar.png" style="height: 10em;width: auto;object-fit: contain;"
+                    alt="">
+                  <ion-label class="teachercard">
+                    <p>
+                      NAME
+                    </p>{{item.name}}
+                  </ion-label>
+                  <ion-label class="teachercard">
+                    <p>
+                      EMAIL
+                    </p>
+                    {{item.email}}
+                  </ion-label>
+                  <ion-label class="teachercard">
+                    <p>
+                      PHONE
+                    </p>
+                    {{item.phone}}
+                  </ion-label>
+                  <ion-label class="teachercard">
+                    <p>
+                      SALLERY
+                    </p>
+                    {{item.salary}}
+                  </ion-label>
+                </ion-card-content>
+                <ion-button color="danger" expand='block'>HOLD SALLERY</ion-button>
+                <ion-button color="success" expand='block'>APPROVE SALLERY</ion-button>
+              </ion-card>
+            </div>
+            <ion-footer>
+            </ion-footer>
+          </ion-col>
         </ion-row>
       </ion-grid>
 
     </div>
+
+
+    <div *ngIf="currentDiv== 'expenditure'">
+      <ion-grid>
+        <ion-row>
+          <!--
+            //////////////////////////////////////
+                    SIDE MENU
+            /////////////////////////////////////        
+          -->
+          <ion-col size="3">
+
+            <div id="mySidenav" class="sidenav">
+
+              <div style="padding-left: 8px;padding-right: 8px;">
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='home'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a ">
+                    <ion-icon name="home"></ion-icon>
+                    HOME
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('home')" *ngIf="currentDiv!='home'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="home"></ion-icon>
+                    HOME
+                  </ion-label>
+                </ion-item>
+
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='payes'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="wallet"></ion-icon>
+                    PAYES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('payes')" *ngIf="currentDiv!='payes'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="wallet"></ion-icon>
+                    PAYES
+                  </ion-label>
+                </ion-item>
+
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='fines'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="pulse"></ion-icon>
+                    FINES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('fines')" *ngIf="currentDiv!='fines'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="pulse"></ion-icon>
+                    FINES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='sallery'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="card"></ion-icon>
+                    SALLERIES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('sallery')" *ngIf="currentDiv!='sallery'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="card"></ion-icon>
+                    SALLERIES
+                  </ion-label>
+                </ion-item>
+
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='expenditure'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="folder"></ion-icon>
+                    EXPENDITURE
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('expenditure')" *ngIf="currentDiv!='expenditure'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="folder"></ion-icon>
+                    EXPENDITURE
+                  </ion-label>
+                </ion-item>
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='payes'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="filter"></ion-icon>
+                    DEFAULTERS
+                  </ion-label>
+                </ion-item>
+
+                <ion-item *ngIf="currentDiv!='payes'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="filter"></ion-icon>
+                    DEFAULTERS
+                  </ion-label>
+                </ion-item>
+
+
+                <ion-item color="none">
+                  <ion-label color="danger" style="color: red;" class=" label">
+                    <ion-icon color="danger" name="log-out"></ion-icon>
+                    LOGOUT
+                  </ion-label>
+                </ion-item>
+
+
+
+              </div>
+            </div>
+
+          </ion-col>
+
+          <!--
+            //////////////////////////////////////
+                    MAIN
+            /////////////////////////////////////        
+          -->
+          <ion-col size="8">
+            <div style="display: flex;justify-content: center;align-items: center;text-align: center;">
+              <ion-card mode="ios" color="none" style="background: white;width: 50em;">
+                <h1 style="font-size:40px;color:black;font-family: impact;text-align: center;">
+                  ADD AN EXPENDITURE
+                </h1>
+                <div style="max-width: 5000px;">
+                  <ion-item color="none" style="color:black;">
+                    <ion-label position="float">MONTH:</ion-label>
+                    <ion-input [(ngModel)]='month' inputmode="text" required></ion-input>
+                  </ion-item>
+                  <ion-item color="none" style="color:black;">
+                    <ion-label position="float">AMOUNT:</ion-label>
+                    <ion-input [(ngModel)]='payrollamount' inputmode="numeric" required></ion-input>
+                  </ion-item>
+                  <ion-item color="none" style="color:black;">
+                    <ion-label position="float">PURPOSE:</ion-label>
+                    <ion-input [(ngModel)]='purpose' inputmode="numeric" required></ion-input>
+                  </ion-item>
+                  <ion-item *ngIf="userData" color="none" style="color:black;">
+                    <ion-label position="float">ISSUED BY:</ion-label>
+                    <ion-input value="{{userData.Df.sn.proto.mapValue.fields.name.stringValue}}" required></ion-input>
+                  </ion-item>
+                  <ion-item *ngIf="userData" color="none" style="color:black;">
+                    <ion-label position="float">CONTACT EMAIL:</ion-label>
+                    <ion-input value="{{userData.Df.sn.proto.mapValue.fields.email.stringValue}}" inputmode="email"
+                      required>
+                    </ion-input>
+                  </ion-item>
+                  <ion-item color="none" style="color:black;">
+                    <ion-label position="float">CREATED:</ion-label>
+                    <ion-input value="{{date}}" type="text" inputmode="text" required></ion-input>
+                  </ion-item>
+
+                  <ion-button (click)="addexpenditure()" size="full" fill="clear"
+                    style="font-family: impact;font-size:40px;">
+                    Submit</ion-button>
+                </div>
+
+              </ion-card>
+            </div>
+
+            
+            <div>
+              <h1 style="font-size:40px;color:black;font-family: impact;text-align: center;">
+                ADDED EXPENDITURE
+              </h1>
+              <table *ngIf="expends">
+                <thead>
+                  <tr>
+                    <th>PURPOSE</th>
+                    <th>AMOUNT</th>
+                    <th>UPLOADED BY</th>
+                    <th>MONTH</th>
+                  </tr>
+
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of expends" style="color: black;">
+                    <td data-column="Student Name">{{item.purpose}}</td>
+                    <td data-column="Reg No">{{item.Amount}}</td>
+                    <td data-column="AMOUNT">{{item.UploadedBy}}</td>
+                    <td data-column="Twitter">
+                      {{item.month}}
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </div>
+
+
 
   </div>
 </ion-content>
