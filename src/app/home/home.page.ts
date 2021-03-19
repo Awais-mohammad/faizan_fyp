@@ -76,22 +76,46 @@ export class HomePage implements OnInit {
       this.presentAlert()
     }
     else {
-      if (this.loginFor == 'ADMIN') {
-        this.login()
-      } else if (this.loginFor = 'HOD'){
-        this.Router.navigate(['admin']);
+      if (this.loginFor == 'ACCOUNTANT') {
+        this.accountantlogin()
       }
+      else if (this.loginFor == 'TEACHER') {
+        this.teacherLogin()
+      }
+      else if (this.loginFor = 'ADMIN') {
+        this.adminLogin()
+
+      }
+
       else {
         this.Router.navigate(['testpage'])
       }
     }
 
   }
-
-  login() {
+  //
+  accountantlogin() {
     this.email = this.email.toLowerCase()
     this.firebaseauth.auth.signInWithEmailAndPassword(this.email, this.password).then(() => {
       this.Router.navigate(['panel-home'])
+    }).catch(er => {
+      alert(er.message)
+    })
+  }
+
+  teacherLogin() {
+    this.email = this.email.toLowerCase()
+    this.firebaseauth.auth.signInWithEmailAndPassword(this.email, this.password).then(() => {
+      this.Router.navigate(['teacher-panel'])
+    }).catch(er => {
+      alert(er.message)
+    })
+  }
+
+  adminLogin() {
+    this.email = this.email.toLowerCase()
+    this.firebaseauth.auth.signInWithEmailAndPassword(this.email, this.password).then(() => {
+      this.Router.navigate(['admin'])
     }).catch(er => {
       alert(er.message)
     })
@@ -109,5 +133,8 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
 
+  }
+  ionViewWillEnter() {
+    this.loginFor = ''
   }
 }

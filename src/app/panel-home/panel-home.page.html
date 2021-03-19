@@ -77,6 +77,21 @@
                   </ion-label>
                 </ion-item>
 
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='fee'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="pulse"></ion-icon>
+                    FEES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('fee')" *ngIf="currentDiv!='fee'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="wallet"></ion-icon>
+                    FEES
+                  </ion-label>
+                </ion-item>
+
+
                 <ion-item (click)="gotoDiv('fines')" *ngIf="currentDiv!='fines'" color="none">
                   <ion-label class="a label">
                     <ion-icon name="pulse"></ion-icon>
@@ -120,7 +135,7 @@
                   </ion-label>
                 </ion-item>
 
-                <ion-item *ngIf="currentDiv!='payes'" color="none">
+                <ion-item (click)="gotoDiv('defaulters')" *ngIf="currentDiv!='payes'" color="none">
                   <ion-label class="a label">
                     <ion-icon name="filter"></ion-icon>
                     DEFAULTERS
@@ -180,7 +195,8 @@
                         <div
                           style="display: flex;text-align: right;align-items: flex-end;justify-content: flex-end;position: relative;top: 1em;">
 
-                          <ion-button mode='ios' color="none" style="background-color: brown;border-radius: 15px;">
+                          <ion-button (click)="gotoDiv('fines')" mode='ios' color="none"
+                            style="background-color: brown;border-radius: 15px;">
                             <p style="font-family: text;color: white;">
                               MANAGE
                             </p>
@@ -217,7 +233,7 @@
                         <div
                           style="display: flex;text-align: right;align-items: flex-end;justify-content: flex-end;position: relative;top: 1em;">
 
-                          <ion-button mode='ios' color="none" style="background-color: brown;border-radius: 15px;">
+                          <ion-button (click)="gotoDiv('fee')" mode='ios' color="none" style="background-color: brown;border-radius: 15px;">
                             <p style="font-family: text;color: white;">
                               MANAGE
                             </p>
@@ -254,7 +270,7 @@
                         <div
                           style="display: flex;text-align: right;align-items: flex-end;justify-content: flex-end;position: relative;top: 1em;">
 
-                          <ion-button mode='ios' color="none" style="background-color: brown;border-radius: 15px;">
+                          <ion-button (click)="gotoDiv('sallery')" mode='ios' color="none" style="background-color: brown;border-radius: 15px;">
                             <p style="font-family: text;color: white;">
                               MANAGE
                             </p>
@@ -292,7 +308,7 @@
                         <div
                           style="display: flex;text-align: right;align-items: flex-end;justify-content: flex-end;position: relative;top: 1em;">
 
-                          <ion-button mode='ios' color="none" style="background-color: brown;border-radius: 15px;">
+                          <ion-button (click)="gotoDiv('expenditure')" mode='ios' color="none" style="background-color: brown;border-radius: 15px;">
                             <p style="font-family: text;color: white;">
                               MANAGE
                             </p>
@@ -329,7 +345,7 @@
                         <div
                           style="display: flex;text-align: right;align-items: flex-end;justify-content: flex-end;position: relative;top: 1em;">
 
-                          <ion-button mode='ios' color="none" style="background-color: brown;border-radius: 15px;">
+                          <ion-button (click)="gotoDiv('payes')" mode='ios' color="none" style="background-color: brown;border-radius: 15px;">
                             <p style="font-family: text;color: white;">
                               MANAGE
                             </p>
@@ -365,7 +381,7 @@
                         <div
                           style="display: flex;text-align: right;align-items: flex-end;justify-content: flex-end;position: relative;top: 1em;">
 
-                          <ion-button mode='ios' color="none" style="background-color: brown;border-radius: 15px;">
+                          <ion-button (click)="gotoDiv('defaulters')" mode='ios' color="none" style="background-color: brown;border-radius: 15px;">
                             <p style="font-family: text;color: white;">
                               MANAGE
                             </p>
@@ -449,6 +465,21 @@
                   </ion-label>
                 </ion-item>
 
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='fee'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="pulse"></ion-icon>
+                    FEES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('fee')" *ngIf="currentDiv!='fee'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="wallet"></ion-icon>
+                    FEES
+                  </ion-label>
+                </ion-item>
+
+
                 <ion-item (click)="gotoDiv('fines')" *ngIf="currentDiv!='fines'" color="none">
                   <ion-label class="a label">
                     <ion-icon name="pulse"></ion-icon>
@@ -492,7 +523,7 @@
                   </ion-label>
                 </ion-item>
 
-                <ion-item *ngIf="currentDiv!='payes'" color="none">
+                <ion-item (click)="gotoDiv('defaulters')" *ngIf="currentDiv!='payes'" color="none">
                   <ion-label class="a label">
                     <ion-icon name="filter"></ion-icon>
                     DEFAULTERS
@@ -657,6 +688,21 @@ FINES FOR STUDENTS
                   </ion-label>
                 </ion-item>
 
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='fee'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="pulse"></ion-icon>
+                    FEES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('fee')" *ngIf="currentDiv!='fee'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="wallet"></ion-icon>
+                    FEES
+                  </ion-label>
+                </ion-item>
+
+
                 <ion-item (click)="gotoDiv('fines')" *ngIf="currentDiv!='fines'" color="none">
                   <ion-label class="a label">
                     <ion-icon name="pulse"></ion-icon>
@@ -700,7 +746,7 @@ FINES FOR STUDENTS
                   </ion-label>
                 </ion-item>
 
-                <ion-item *ngIf="currentDiv!='payes'" color="none">
+                <ion-item (click)="gotoDiv('defaulters')" *ngIf="currentDiv!='payes'" color="none">
                   <ion-label class="a label">
                     <ion-icon name="filter"></ion-icon>
                     DEFAULTERS
@@ -885,22 +931,36 @@ FINES FOR STUDENTS
                   </ion-label>
                 </ion-item>
 
-                <ion-item *ngIf="currentDiv!='fines'" color="none">
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='fee'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="pulse"></ion-icon>
+                    FEES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('fee')" *ngIf="currentDiv!='fee'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="wallet"></ion-icon>
+                    FEES
+                  </ion-label>
+                </ion-item>
+
+
+                <ion-item (click)="gotoDiv('fines')" *ngIf="currentDiv!='fines'" color="none">
                   <ion-label class="a label">
                     <ion-icon name="pulse"></ion-icon>
                     FINES
                   </ion-label>
                 </ion-item>
 
-                <ion-item (click)="goToPage('')" style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='sallery'"
-                  color="none">
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='sallery'" color="none">
                   <ion-label style="color: skyblue;font-weight: bold;" class="a">
                     <ion-icon name="card"></ion-icon>
                     SALLERIES
                   </ion-label>
                 </ion-item>
 
-                <ion-item *ngIf="currentDiv!='sallery'" color="none">
+                <ion-item (click)="gotoDiv('sallery')" *ngIf="currentDiv!='sallery'" color="none">
                   <ion-label class="a label">
                     <ion-icon name="card"></ion-icon>
                     SALLERIES
@@ -908,14 +968,14 @@ FINES FOR STUDENTS
                 </ion-item>
 
 
-                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='payes'" color="none">
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='expenditure'" color="none">
                   <ion-label style="color: skyblue;font-weight: bold;" class="a">
                     <ion-icon name="folder"></ion-icon>
                     EXPENDITURE
                   </ion-label>
                 </ion-item>
 
-                <ion-item *ngIf="currentDiv!='payes'" color="none">
+                <ion-item (click)="gotoDiv('expenditure')" *ngIf="currentDiv!='expenditure'" color="none">
                   <ion-label class="a label">
                     <ion-icon name="folder"></ion-icon>
                     EXPENDITURE
@@ -929,7 +989,7 @@ FINES FOR STUDENTS
                   </ion-label>
                 </ion-item>
 
-                <ion-item *ngIf="currentDiv!='payes'" color="none">
+                <ion-item (click)="gotoDiv('defaulters')" *ngIf="currentDiv!='payes'" color="none">
                   <ion-label class="a label">
                     <ion-icon name="filter"></ion-icon>
                     DEFAULTERS
@@ -1050,6 +1110,21 @@ FINES FOR STUDENTS
                   </ion-label>
                 </ion-item>
 
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='fee'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="pulse"></ion-icon>
+                    FEES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('fee')" *ngIf="currentDiv!='fee'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="wallet"></ion-icon>
+                    FEES
+                  </ion-label>
+                </ion-item>
+
+
                 <ion-item (click)="gotoDiv('fines')" *ngIf="currentDiv!='fines'" color="none">
                   <ion-label class="a label">
                     <ion-icon name="pulse"></ion-icon>
@@ -1093,7 +1168,7 @@ FINES FOR STUDENTS
                   </ion-label>
                 </ion-item>
 
-                <ion-item *ngIf="currentDiv!='payes'" color="none">
+                <ion-item (click)="gotoDiv('defaulters')" *ngIf="currentDiv!='payes'" color="none">
                   <ion-label class="a label">
                     <ion-icon name="filter"></ion-icon>
                     DEFAULTERS
@@ -1114,7 +1189,6 @@ FINES FOR STUDENTS
             </div>
 
           </ion-col>
-
           <!--
             //////////////////////////////////////
                     MAIN
@@ -1162,7 +1236,7 @@ FINES FOR STUDENTS
               </ion-card>
             </div>
 
-            
+
             <div>
               <h1 style="font-size:40px;color:black;font-family: impact;text-align: center;">
                 ADDED EXPENDITURE
@@ -1197,7 +1271,395 @@ FINES FOR STUDENTS
       </ion-grid>
     </div>
 
+    <div *ngIf="currentDiv=='fee'">
+      <ion-grid>
+        <ion-row>
+          <!--
+            //////////////////////////////////////
+                    SIDE MENU
+            /////////////////////////////////////        
+          -->
+          <ion-col size="3">
 
+            <div id="mySidenav" class="sidenav">
+
+              <div style="padding-left: 8px;padding-right: 8px;">
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='home'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a ">
+                    <ion-icon name="home"></ion-icon>
+                    HOME
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('home')" *ngIf="currentDiv!='home'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="home"></ion-icon>
+                    HOME
+                  </ion-label>
+                </ion-item>
+
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='payes'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="wallet"></ion-icon>
+                    PAYES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('payes')" *ngIf="currentDiv!='payes'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="wallet"></ion-icon>
+                    PAYES
+                  </ion-label>
+                </ion-item>
+
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='fines'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="pulse"></ion-icon>
+                    FINES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='fee'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="pulse"></ion-icon>
+                    FEES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('fee')" *ngIf="currentDiv!='fee'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="wallet"></ion-icon>
+                    FEES
+                  </ion-label>
+                </ion-item>
+
+
+                <ion-item (click)="gotoDiv('fines')" *ngIf="currentDiv!='fines'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="pulse"></ion-icon>
+                    FINES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='sallery'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="card"></ion-icon>
+                    SALLERIES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('sallery')" *ngIf="currentDiv!='sallery'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="card"></ion-icon>
+                    SALLERIES
+                  </ion-label>
+                </ion-item>
+
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='expenditure'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="folder"></ion-icon>
+                    EXPENDITURE
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('expenditure')" *ngIf="currentDiv!='expenditure'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="folder"></ion-icon>
+                    EXPENDITURE
+                  </ion-label>
+                </ion-item>
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='payes'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="filter"></ion-icon>
+                    DEFAULTERS
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('defaulters')" *ngIf="currentDiv!='payes'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="filter"></ion-icon>
+                    DEFAULTERS
+                  </ion-label>
+                </ion-item>
+
+
+                <ion-item color="none">
+                  <ion-label color="danger" style="color: red;" class=" label">
+                    <ion-icon color="danger" name="log-out"></ion-icon>
+                    LOGOUT
+                  </ion-label>
+                </ion-item>
+
+
+
+              </div>
+            </div>
+
+          </ion-col>
+
+          <ion-col size="8">
+
+            <h1 style="font-size:40px;color:black;font-family: impact;text-align: center;">
+              CURRENT PERIOD/MONTH IS <span style="color: crimson;">
+                {{currmonth}}
+              </span>
+            </h1>
+
+            <table *ngIf="feearay">
+              <thead>
+                <tr>
+                  <th>Student Name</th>
+                  <th>Reg No</th>
+                  <th>AMOUNT</th>
+                  <th>STATUS</th>
+                  <th>ACTON</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of feearay" style="color: black;">
+                  <td data-column="Student Name">{{item.studentName}}</td>
+                  <td data-column="Reg No">{{item.regNo}}</td>
+                  <td data-column="AMOUNT">{{item.amount}}</td>
+                  <td data-column="Twitter">
+
+                    {{item.status}}
+                  </td>
+
+                  <td data-column="Twitter">
+                    <ion-button *ngIf="item.status=='unpayed'" (click)="payFee(item.studentName,item.uid,item.month)"
+                      color="success" expand='block' mode='ios'>
+                      PAY
+                    </ion-button>
+
+                    <ion-button disable='true' *ngIf="item.status=='payed'" fill='clear' mode='ios'>
+                      NO ACTION NEEDED
+                    </ion-button>
+
+                  </td>
+
+
+
+                </tr>
+
+
+
+              </tbody>
+            </table>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+
+    </div>
+
+    <div *ngIf="width > 740 && currentDiv=='defaulters'">
+
+      <ion-grid>
+        <ion-row>
+          <!--
+            //////////////////////////////////////
+                    SIDE MENU
+            /////////////////////////////////////        
+          -->
+          <ion-col size="3">
+
+            <div id="mySidenav" class="sidenav">
+
+              <div style="padding-left: 8px;padding-right: 8px;">
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='home'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a ">
+                    <ion-icon name="home"></ion-icon>
+                    HOME
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('home')" *ngIf="currentDiv!='home'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="home"></ion-icon>
+                    HOME
+                  </ion-label>
+                </ion-item>
+
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='payes'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="wallet"></ion-icon>
+                    PAYES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('payes')" *ngIf="currentDiv!='payes'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="wallet"></ion-icon>
+                    PAYES
+                  </ion-label>
+                </ion-item>
+
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='fines'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="pulse"></ion-icon>
+                    FINES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='fee'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="pulse"></ion-icon>
+                    FEES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('fee')" *ngIf="currentDiv!='fee'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="wallet"></ion-icon>
+                    FEES
+                  </ion-label>
+                </ion-item>
+
+
+                <ion-item (click)="gotoDiv('fines')" *ngIf="currentDiv!='fines'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="pulse"></ion-icon>
+                    FINES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='sallery'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="card"></ion-icon>
+                    SALLERIES
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('sallery')" *ngIf="currentDiv!='sallery'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="card"></ion-icon>
+                    SALLERIES
+                  </ion-label>
+                </ion-item>
+
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='expenditure'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="folder"></ion-icon>
+                    EXPENDITURE
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('expenditure')" *ngIf="currentDiv!='expenditure'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="folder"></ion-icon>
+                    EXPENDITURE
+                  </ion-label>
+                </ion-item>
+
+                <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='payes'" color="none">
+                  <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                    <ion-icon name="filter"></ion-icon>
+                    DEFAULTERS
+                  </ion-label>
+                </ion-item>
+
+                <ion-item (click)="gotoDiv('defaulters')" *ngIf="currentDiv!='payes'" color="none">
+                  <ion-label class="a label">
+                    <ion-icon name="filter"></ion-icon>
+                    DEFAULTERS
+                  </ion-label>
+                </ion-item>
+
+
+                <ion-item color="none">
+                  <ion-label color="danger" style="color: red;" class=" label">
+                    <ion-icon color="danger" name="log-out"></ion-icon>
+                    LOGOUT
+                  </ion-label>
+                </ion-item>
+
+
+
+              </div>
+            </div>
+
+          </ion-col>
+
+          <ion-col size="8">
+
+            <h1 style="font-size:40px;color:black;font-family: impact;text-align: center;">
+              CURRENT PERIOD/MONTH IS <span style="color: crimson;">
+                {{currmonth}}
+              </span>
+
+            </h1>
+
+            <h3 style="font-size:40px;color:black;font-family: impact;text-align: center;">
+              DEFAULTERS
+
+
+            </h3>
+
+
+
+            <table *ngIf="feearay">
+              <thead>
+                <tr>
+                  <th>Student Name</th>
+                  <th>Reg No</th>
+                  <th>AMOUNT</th>
+                  <th>STATUS</th>
+                  <th>ACTON</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of feearay" style="color: black;">
+                  <td *ngIf="item.dueDate < currDay && item.staus== 'unpayed'" data-column="Student Name">
+                    {{item.studentName}}</td>
+                  <td *ngIf="item.dueDate < currDay && item.status== 'unpayed'" data-column="Reg No">{{item.regNo}}</td>
+                  <td *ngIf="item.dueDate < currDay && item.status== 'unpayed'" data-column="AMOUNT">{{item.amount}}
+                  </td>
+                  <td *ngIf="item.dueDate < currDay && item.status== 'unpayed'" data-column="Twitter">
+
+                    {{item.status}}
+                  </td>
+
+                  <td data-column="Twitter">
+                    <ion-button *ngIf="item.dueDate < currDay && item.status== 'unpayed'"
+                      (click)="payFee(item.studentName,item.uid,item.month)" color="success" expand='block' mode='ios'>
+                      PAY
+                    </ion-button>
+
+
+                  </td>
+
+                  <td>
+                    <ion-button disable='true' *ngIf="item.dueDate < currDay && item.status== 'unpayed'" fill='clear'
+                      mode='ios'>
+                      ISSUE SUSPENSION
+                    </ion-button>
+
+                  </td>
+
+
+                </tr>
+
+
+
+              </tbody>
+            </table>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </div>
 
   </div>
 </ion-content>

@@ -1,3 +1,4 @@
+import { FeeinvoicePage } from './../feeinvoice/feeinvoice.page';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Component, HostListener, OnInit } from '@angular/core';
@@ -320,6 +321,78 @@ export class PanelHomePage implements OnInit {
     })
   }
 
+  studentFees: any;
+  feearay: any[] = []
+
+  getStudents() {
+    this.feearay = []
+    this.firestore.collection('students').valueChanges().subscribe((res: any) => {
+
+      for (var i = 0; i < res.length; i++) {
+        const date = new Date();
+        const month = date.toLocaleString('default', { month: 'long' });
+        this.currmonth = month;
+
+
+        this.firestore.collection('students').doc(res[i].uid).collection('fees').doc(this.currmonth).valueChanges().subscribe(data => {
+          if (data) {
+
+            this.studentFees = data;
+
+            this.feearay.push(this.studentFees)
+            console.log(this.feearay);
+
+          }
+          else {
+
+            this.addfee()
+
+          }
+        })
+      }
+
+    })
+
+
+  }
+  currDay: any = new Date().getDate()
+  addfee() {
+
+    this.firestore.collection('students').valueChanges().subscribe((res: any) => {
+
+      for (var i = 0; i < res.length; i++) {
+
+        const amount = res[i].fee;
+        const dueDate = new Date().getDay();
+        const dueMonth = new Date().getMonth();
+        const status = 'unpayed'
+        const studentName = res[i].name
+        const regNo = res[i].reg
+        const uid = res[i].uid
+        const month = this.currmonth
+
+        this.firestore.collection('students').doc(res[i].uid).collection('fees').doc(this.currmonth).set({
+          amount, dueDate, status, month, dueMonth, uid, regNo, studentName,
+        }).then(() => {
+
+        })
+      }
+    })
+  }
+
+  currmonth: any;
+
+  payFee(stdName: string, docID: string, month: string) {
+    const status = 'payed'
+    this.firestore.collection('students').doc(docID).collection('fees').doc(month).update({
+      status
+    }).then(() => {
+      alert(stdName + 'fee payed successfully')
+    }).catch(Err => {
+      alert(JSON.stringify(Err.message))
+    })
+  }
+
   ngOnInit() {
     const authsub = this.firebaseauth.authState.subscribe(user => {
       if (user) {
@@ -340,7 +413,10 @@ export class PanelHomePage implements OnInit {
     this.getfines()
     this.getpayedfines()
     this.getteachers()
+    this.getStudents()
     this.getexpends()
+
+
   }
 
 }

@@ -1,7 +1,8 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFireAuth } from 'angularfire2/auth'; import { AlertController, iosTransitionAnimation } from '@ionic/angular';
-import { proxyMethods } from '@ionic/angular/directives/proxies-utils';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AlertController, iosTransitionAnimation } from '@ionic/angular';
 
 
 @Component({
@@ -14,7 +15,8 @@ export class AdminPage implements OnInit {
   constructor(
     private firestore: AngularFirestore,
     private afAuth: AngularFireAuth,
-    public alertController: AlertController
+    public alertController: AlertController,
+    private router: Router,
   ) { }
 
   toShow: string = "teachers";
@@ -25,34 +27,69 @@ export class AdminPage implements OnInit {
   password: string;
   salary: number;
   teachers: any[] = [];
-  teacher: string;
+  teacher: any;
   classes: any[] = [];
-  reg: number;
+  reg: string;
   students: any[] = [];
   accountants: any[] = [];
+  abc: string[] = ['Teachers', 'Students', 'Accountants']
+  showForm: boolean = false;
+
+  hideForm() {
+    this.showForm = !this.showForm
+  }
 
   addClass() {
-    if (this.name && this.name != "" && this.name.length > 3) {
-      if (this.teacher) {
-        const name = this.name;
-        const teacher = this.teacher;
-        this.firestore.collection('classes').add({
-          name, teacher,
-        }).then(dat => {
-          const uid = dat.id;
-          this.firestore.collection('classes').doc(dat.id).update({
-            uid,
-          }).then(dat2 => {
-            alert("Class ADDED!");
-            this.subOption = "";
+    console.log(this.teacher);
+
+    if (this.teacherName) {
+      if (this.name && this.name != "" && this.name.length > 3) {
+        if (this.teacher) {
+          const name = this.name;
+          const teacherName = this.teacherName;
+          const teacherID = this.teacherID
+          this.firestore.collection('classes').add({
+            name, teacherName, teacherID
+          }).then(dat => {
+            const uid = dat.id;
+            this.firestore.collection('classes').doc(dat.id).update({
+              uid,
+            }).then(dat2 => {
+              alert("Class ADDED!");
+              this.subOption = "";
+            })
+          }).catch(err => {
+            alert(err.message);
           })
-        }).catch(err => {
-          alert(err.message);
-        })
+        }
       }
     }
   }
-  
+
+  allteachers: any;
+
+  getTeacher() {
+    this.firestore.collection('teachers').valueChanges().subscribe((data: any) => {
+      this.allteachers = data;
+      console.log(this.allteachers);
+
+    })
+  }
+
+  teacherName: string;
+  teacherID: string;
+
+  choosecat(a) {
+
+    alert(a);
+    this.teacherID = a;
+    this.firestore.collection('teachers').doc(a).valueChanges().subscribe((res: any) => {
+      console.log(res.name);
+      this.teacherName = res.name;
+      console.log(this.teacherName);
+
+    })
+  }
   addAccountant() {
     if (this.name && this.name != "" && this.name.length > 3) {
       if (this.phone && this.phone != "" && this.phone.length > 9) {
@@ -112,30 +149,62 @@ export class AdminPage implements OnInit {
       }
     }
   }
+  parent: string;
 
   addStudent() {
-    if (this.name && this.name != "" && this.name.length > 3) {
-      if (this.phone && this.phone != "" && this.phone.length > 9) {
-        if (this.email && this.email != "" && this.email.length > 7) {
-          if (this.password && this.password != "" && this.password.length > 5) {
-            if (this.reg) {
-              this.afAuth.auth.createUserWithEmailAndPassword(this.email, this.password).then(value => {
-                const uid = value.user.uid;
-                const name = this.name;
-                const phone = this.phone;
-                const email = this.email;
-                const reg = this.reg;
-                this.firestore.collection('students').doc(uid).set({
-                  name, uid, phone, email, reg,
-                }).then(dat => {
-                  alert("STUDENT ADDED!");
-                  this.subOption = "";
-                }).catch(err => {
-                  alert(err.message);
+    if (this.parent) {
+      if (this.name && this.name != "" && this.name.length > 3) {
+        if (this.phone && this.phone != "" && this.phone.length > 9) {
+          if (this.email && this.email != "" && this.email.length > 7) {
+            if (this.password && this.password != "" && this.password.length > 5) {
+              if (this.reg) {
+                this.firestore.collection('students', q => q.where('parent', '==', this.parent.toLocaleLowerCase())).get().subscribe(res => {
+                  if (!res.empty) {
+
+                    this.afAuth.auth.createUserWithEmailAndPassword(this.email, this.password).then(value => {
+                      const uid = value.user.uid;
+                      const name = this.name;
+                      const phone = this.phone;
+                      const email = this.email;
+                      const fee = '2500';
+                      const reg = this.reg;
+                      const parent = this.parent.toLocaleLowerCase()
+                      this.firestore.collection('students').doc(uid).set({
+                        name, uid, phone, email, reg, fee, parent,
+                      }).then(dat => {
+                        alert("STUDENT ADDED!sibbling scholarship");
+                        this.subOption = "";
+                      }).catch(err => {
+                        alert(err.message);
+                      })
+                    }).catch(err => {
+                      alert(err.message);
+                    })
+                  }
+                  else {
+
+                    this.afAuth.auth.createUserWithEmailAndPassword(this.email, this.password).then(value => {
+                      const uid = value.user.uid;
+                      const name = this.name;
+                      const phone = this.phone;
+                      const email = this.email;
+                      const fee = '5000';
+                      const reg = this.reg;
+                      const parent = this.parent.toLocaleLowerCase()
+                      this.firestore.collection('students').doc(uid).set({
+                        name, uid, phone, email, reg, parent, fee
+                      }).then(dat => {
+                        alert("STUDENT ADDED!No scholarship");
+                        this.subOption = "";
+                      }).catch(err => {
+                        alert(err.message);
+                      })
+                    }).catch(err => {
+                      alert(err.message);
+                    })
+                  }
                 })
-              }).catch(err => {
-                alert(err.message);
-              })
+              }
             }
           }
         }
@@ -274,7 +343,63 @@ export class AdminPage implements OnInit {
     this.subOption = option;
   }
 
+  addAdmin() {
+    if (!this.name || !this.phone || !this.email || !this.password) {
+      alert('Fill out All fields')
+    }
+    else {
+      this.afAuth.auth.createUserWithEmailAndPassword(this.email, this.password).then(value => {
+        const uid = value.user.uid;
+        const name = this.name;
+        const email = this.email;
+        const phone = this.phone;
+        this.firestore.collection('admins').doc(uid).set({
+          uid, name, email, phone,
+        }).then((dat) => {
+          alert('ADMIN ADDED')
+        }).catch(er => {
+          alert(JSON.stringify(er.message))
+        })
+      }).catch(err => {
+        alert(JSON.stringify(err.message))
+      })
+    }
+  }
+
+  logOut() {
+    this.afAuth.auth.signOut().then(() => {
+      this.router.navigate(['home'])
+    }).catch(err => {
+      alert(JSON.stringify(err))
+    })
+  }
+
   ngOnInit() {
+
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        if (user.uid) {
+          this.firestore.collection('admins').doc(user.uid).valueChanges().subscribe(res => {
+            if (res == undefined) {
+              this.logOut()
+              this.router.navigate(['home'])
+              alert('Portal is only for admins')
+            }
+            else {
+              this.router.navigate(['admin'])
+            }
+          })
+        }
+        else {
+          this.router.navigate(['home'])
+        }
+
+      }
+      else {
+        this.router.navigate(['home'])
+      }
+    })
+    this.getTeacher()
     this.fetchTeachers();
     this.fetchClasses();
     this.fetchStudents();
