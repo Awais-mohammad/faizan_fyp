@@ -39,17 +39,19 @@ const routes: Routes = [
     path: 'splashscreen',
     loadChildren: () => import('./splashscreen/splashscreen.module').then( m => m.SplashscreenPageModule)
   },
+
   {
-    path: 'testpage',
-    loadChildren: () => import('./testpage/testpage.module').then( m => m.TestpagePageModule)
-  },  {
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
   },
   {
     path: 'teacher-panel',
     loadChildren: () => import('./teacher-panel/teacher-panel.module').then( m => m.TeacherPanelPageModule)
+  },  {
+    path: 'students-panel',
+    loadChildren: () => import('./students-panel/students-panel.module').then( m => m.StudentsPanelPageModule)
   },
+
 
 ];
 

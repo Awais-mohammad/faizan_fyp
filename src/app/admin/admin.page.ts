@@ -34,11 +34,15 @@ export class AdminPage implements OnInit {
   accountants: any[] = [];
   abc: string[] = ['Teachers', 'Students', 'Accountants']
   showForm: boolean = false;
+  a: string = "teachers";
 
   hideForm() {
     this.showForm = !this.showForm
   }
+  check(a: string) {
+    alert(a);
 
+  }
   addClass() {
     console.log(this.teacher);
 
@@ -65,9 +69,59 @@ export class AdminPage implements OnInit {
       }
     }
   }
+  cat: string;
+  mess: string;
 
+  addAnnounce() {
+    if (!this.cat) {
+      alert('Choose a category')
+    }
+    else if (!this.mess) {
+      alert('Enter Announcement text')
+    }
+    else {
+      const text = this.mess;
+      const cat = this.cat;
+      const timestamp = Date.now()
+      this.firestore.collection('announcements').add({
+        text, cat, timestamp
+      }).then(dat => {
+        const docID = dat.id
+        this.firestore.collection('announcements').doc(docID).update({
+          docID,
+        }).then(() => {
+          alert('ANNOUNCED SUCCESSFULLY')
+          this.hideForm()
+        })
+      }).catch(err => {
+        alert(JSON.stringify(err.message))
+      })
+    }
+  }
+
+  announce: any;
+
+  getAnnnouncement(typ: string) {
+    this.firestore.collection('announcements', q => q.where('cat', '==', typ)).valueChanges().subscribe(data => {
+      if (data.length < 1) {
+
+      }
+      else {
+        this.announce = data
+        console.log(this.announce);
+
+      }
+    })
+  }
   allteachers: any;
 
+  removeAnnounce(id: string) {
+    this.firestore.collection('announcements').doc(id).delete().then(() => {
+      alert('ANnouncement removed')
+    }).catch(err => {
+      alert(JSON.stringify(err.message))
+    })
+  }
   getTeacher() {
     this.firestore.collection('teachers').valueChanges().subscribe((data: any) => {
       this.allteachers = data;
@@ -404,6 +458,7 @@ export class AdminPage implements OnInit {
     this.fetchClasses();
     this.fetchStudents();
     this.fetchAccountants();
+    this.getAnnnouncement('Teachers')
   }
 
 }

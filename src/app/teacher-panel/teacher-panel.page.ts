@@ -221,6 +221,18 @@ export class TeacherPanelPage implements OnInit {
       }
     })
   }
+  getAnnounces() {
+    this.firestore.collection('announcements', q => q.where('cat', '==', 'Teachers')).valueChanges().subscribe(data => {
+      if (data.length < 1) {
+
+      }
+      else {
+        this.announce = data
+        console.log(this.announce);
+
+      }
+    })
+  }
 
   logOut() {
     this.firebaseauth.auth.signOut().then(() => {
@@ -309,8 +321,20 @@ export class TeacherPanelPage implements OnInit {
       })
     }
   }
+  announce: any;
+  goback() {
+    this.class = !this.class
+  }
+  list: boolean = false;
+  opnelist() {
+    this.list = !this.list
+  }
 
+
+
+  name: string;
   ngOnInit() {
+    this.getAnnounces()
     const authSub = this.firebaseauth.authState.subscribe(user => {
       if (user) {
         if (user.uid) {
@@ -325,6 +349,10 @@ export class TeacherPanelPage implements OnInit {
               this.router.navigate(['teacher-panel'])
               this.currentUID = user.uid
               this.getClass()
+
+              this.firestore.collection('teachers').doc(this.currentUID).valueChanges().subscribe((Res: any) => {
+                this.name = Res.name
+              })
             }
           })
 

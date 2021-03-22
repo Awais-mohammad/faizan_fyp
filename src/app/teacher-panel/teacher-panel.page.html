@@ -8,8 +8,11 @@
         </div>
         <div class="items">
 
-          <ion-button (click)="logOut()" class="dosisfont" fill="outline" color="light">logout</ion-button>
-
+          <div id="oho" style="display: flex;">
+            <ion-icon style="font-size: 50px;" name="person-circle-outline"></ion-icon>
+            <ion-label style="position: relative;font-size: 25px;top: 0.5em;">{{name}}</ion-label>
+            <ion-icon (click)="opnelist()" style="position: relative;top: 1.2em;" name="caret-down-outline"></ion-icon>
+          </div>
         </div>
       </div>
     </div>
@@ -49,43 +52,22 @@
             <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='students'" color="none">
               <ion-label style="color: skyblue;font-weight: bold;" class="a">
                 <ion-icon name="wallet"></ion-icon>
-                ADD STUDENT
+                MANAGE CLASS
               </ion-label>
             </ion-item>
 
             <ion-item (click)="gotoDiv('students')" *ngIf="currentDiv!='students'" color="none">
               <ion-label class="a label">
                 <ion-icon name="wallet"></ion-icon>
-                ADD STUDENT
-              </ion-label>
-            </ion-item>
-
-            <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='marks'" color="none">
-              <ion-label style="color: skyblue;font-weight: bold;" class="a">
-                <ion-icon name="wallet"></ion-icon>
-                UPLOAD MARKS
-              </ion-label>
-            </ion-item>
-
-
-            <ion-item (click)="gotoDiv('marks')" *ngIf="currentDiv!='marks'" color="none">
-              <ion-label class="a label">
-                <ion-icon name="wallet"></ion-icon>
-                UPLOAD MARKS
-              </ion-label>
-            </ion-item>
-
-
-            <ion-item (click)="gotoDiv('marks')" *ngIf="currentDiv=='fines'" color="none">
-              <ion-label class="a label">
-                <ion-icon name="pulse"></ion-icon>
-                UPLOAD MARKS
+                MANAGE CLASS
               </ion-label>
             </ion-item>
 
 
 
-            <ion-item color="none">
+
+
+            <ion-item (click)="logOut()" color="none">
               <ion-label color="danger" style="color: red;" class=" label">
                 <ion-icon color="danger" name="log-out"></ion-icon>
                 LOGOUT
@@ -115,120 +97,61 @@
 
           <div style="display: flex;flex-wrap: wrap;margin-top: 2em;">
 
-            <ion-card>
-              <ion-card-content>
-                <div style="display: flex;">
-                  <img style="height: 15em;object-fit: contain;width: 50%;" src="../../assets/teachersallery.jpg"
-                    alt="">
+            <div style="text-align: center;max-width: 90%;position: relative;left: 3em;top: 20%;">
 
-                  <div>
+              <div style="display: flex;justify-content: space-between;">
+                <h1 style="color: black;font-family: text;font-weight: bold;">ANNOUNCEMENTS</h1>
 
-                    <div style="text-align: center;padding-top: 15px;">
-                      <ion-title style="color: black;font-family: text;font-weight: bold;font-size: 18px;">
-                        STUDENTS MANAGEMENT
-                      </ion-title>
-                    </div>
+              </div>
 
-                    <div style="text-align: center;padding-top: 15px;">
-                      <ion-label>
-                        Assign,Delete Fines Of Students,maintain a balanced Rewards and Penalty system, enjoy better
-                      </ion-label>
 
-                    </div>
+              <div style="height: 2em;">
 
-                    <div
-                      style="display: flex;text-align: right;align-items: flex-end;justify-content: flex-end;position: relative;top: 1em;">
+              </div>
 
-                      <ion-button (click)="gotoDiv('sallery')" mode='ios' color="none"
-                        style="background-color: brown;border-radius: 15px;">
-                        <p style="font-family: text;color: white;">
-                          MANAGE
-                        </p>
-                      </ion-button>
-                    </div>
+              <div
+                style="height: 40em;width: 100%;border: 2px solid rgba(0, 0, 0, 0.514);border-radius: 25px;background: white;overflow-y: auto;">
+
+                <h1 style="color: black;font-family: text;text-align: center;">LISTED ANNOUNCEMENTS</h1>
+
+                <div style="display: flex;justify-content: center;align-items: center;text-align: center;">
+
+                  <div style="width: 70%;color: black;">
+                    <ion-title
+                      style="color: black;font-weight: bold;font-family: Arial, Helvetica, sans-serif;text-align: center;">
+                      MESSAGE
+                    </ion-title>
+
+
+
 
                   </div>
 
+
                 </div>
-              </ion-card-content>
-            </ion-card>
 
 
-            <ion-card>
-              <ion-card-content>
-                <div style="display: flex;">
-                  <img style="height: 15em;object-fit: contain;width: 50%;" src="../../assets/expenditure.jpg" alt="">
+                <div *ngFor="let item of announce"
+                  style="display: flex;justify-content: center;align-items: center;text-align: center;flex-direction: column;">
 
-                  <div>
+                  <div *ngIf="item.text" style="display: flex;flex-direction: column;width: 70%;">
+                    <h6 style="position: relative;width: 90%;text-align: center;">
+                      {{item.text}}</h6>
 
-                    <div style="text-align: center;padding-top: 15px;">
-                      <ion-title style="color: black;font-family: text;font-weight: bold;font-size: 18px;">
-                        EXPENDITURE MANAGE
-                      </ion-title>
-                    </div>
 
-                    <div style="text-align: center;padding-top: 15px;">
-                      <ion-label>
-                        Assign,Delete Fines Of Students,maintain a balanced Rewards and Penalty system, enjoy better
-                      </ion-label>
 
-                    </div>
-
-                    <div
-                      style="display: flex;text-align: right;align-items: flex-end;justify-content: flex-end;position: relative;top: 1em;">
-
-                      <ion-button (click)="gotoDiv('expenditure')" mode='ios' color="none"
-                        style="background-color: brown;border-radius: 15px;">
-                        <p style="font-family: text;color: white;">
-                          MANAGE
-                        </p>
-                      </ion-button>
-                    </div>
+                  </div>
+                  <div style="height: 2px;width: 100%;background-color: black;">
 
                   </div>
 
-                </div>
-              </ion-card-content>
-            </ion-card>
 
-
-            <ion-card>
-              <ion-card-content>
-                <div style="display: flex;">
-                  <img style="height: 15em;object-fit: contain;width: 50%;" src="../../assets/payrolls.png" alt="">
-
-                  <div>
-
-                    <div style="text-align: center;padding-top: 15px;">
-                      <ion-title style="color: black;font-family: text;font-weight: bold;font-size: 18px;">
-                        PAYROLL MANAGEMENT
-                      </ion-title>
-                    </div>
-
-                    <div style="text-align: center;padding-top: 15px;">
-                      <ion-label>
-                        Assign,Delete Fines Of Students,maintain a balanced Rewards and Penalty system, enjoy better
-                      </ion-label>
-
-                    </div>
-
-                    <div
-                      style="display: flex;text-align: right;align-items: flex-end;justify-content: flex-end;position: relative;top: 1em;">
-
-                      <ion-button (click)="gotoDiv('payes')" mode='ios' color="none"
-                        style="background-color: brown;border-radius: 15px;">
-                        <p style="font-family: text;color: white;">
-                          MANAGE
-                        </p>
-                      </ion-button>
-                    </div>
-
-                  </div>
 
                 </div>
-              </ion-card-content>
-            </ion-card>
 
+              </div>
+
+            </div>
 
 
 
@@ -302,8 +225,16 @@
                 <ion-button (click)="addstudent()" color="primary" expand='block'>
                   ADD
                 </ion-button>
+
+
+                <ion-button (click)="goback()" color="danger" expand='block'>
+                  goBack
+                </ion-button>
+
+
               </div>
             </ion-card>
+
           </div>
 
           <div *ngIf="!attendenceexists" style="width: 100%;background-color: white;">
@@ -435,7 +366,12 @@
                 <ion-button (click)="addmarks()" color="primary" expand='block'>
                   ADD
                 </ion-button>
+                <ion-button (click)="goback()" color="danger" expand='block'>
+                  goBack
+                </ion-button>
+
               </div>
+
             </ion-card>
           </div>
         </div>
@@ -475,3 +411,8 @@
   </ion-grid>
 
 </ion-content>
+<div *ngIf="list" style="position:fixed;right:10px;top:70px;z-index:1000;">
+  <ion-item color="none" style="background:rgb(255, 255, 255);color:red;font-family: title;" mode="ios" button>
+    <ion-label (click)="logOut()">LOGOUT</ion-label>
+  </ion-item>
+</div>

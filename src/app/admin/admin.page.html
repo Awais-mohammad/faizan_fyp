@@ -23,7 +23,7 @@
         <ion-card color="none" style="height: 768px;background: rgba(0, 0, 0, 0.048);">
           <ion-item color="none" button mode="ios" style="background: white;color:black"
             (click)="changeShow('requests')">
-            <div class="option">Requests</div>
+            <div class="option">Announcements</div>
           </ion-item>
           <ion-item color="none" button mode="ios" style="background: white;color:black"
             (click)="changeShow('classes')">
@@ -42,7 +42,7 @@
             <div class="option">Accountants</div>
           </ion-item>
           <ion-item color="none" button mode="ios" style="background: white;color:black" (click)="changeShow('admins')">
-            <div class="option">ADMIN</div>
+            <div class="option">Admins</div>
           </ion-item>
         </ion-card>
       </ion-col>
@@ -385,7 +385,63 @@
                 ADD
               </ion-button>
             </div>
-            <div style="height: 15em;width: 100%;border: 1px solid blue;border-radius: 25px;background: white;">
+
+            <div>
+              <ion-select (ionChange)="getAnnnouncement(a)" [(ngModel)]="a" placeholder="ANNOUNCEMENTS DONE FOR?"
+                interface='popover' style="border: 2px solid rgba(0, 0, 0, 0.514);color: black;">
+                <ion-select-option *ngFor="let item of abc" value='{{item}}'>
+                  {{item}}
+                </ion-select-option>
+              </ion-select>
+            </div>
+
+            <div style="height: 2em;">
+
+            </div>
+
+            <div
+              style="height: 40em;width: 100%;border: 2px solid rgba(0, 0, 0, 0.514);border-radius: 25px;background: white;overflow-y: auto;">
+
+              <h1 style="color: black;font-family: text;text-align: center;">LISTED ANNOUNCEMENTS</h1>
+
+              <div style="display: flex;">
+
+                <div style="width: 70%;color: black;">
+                  <ion-title style="color: black;font-weight: bold;font-family: Arial, Helvetica, sans-serif;">
+                    MESSAGE
+                  </ion-title>
+
+
+
+
+                </div>
+
+                <div style="width: 30%;">
+                  <ion-title style="color: black;font-weight: bold;font-family: Arial, Helvetica, sans-serif;">
+                    ACTION
+                  </ion-title>
+
+                </div>
+
+              </div>
+
+
+              <div *ngFor="let item of announce" style="display: flex;">
+
+                <div *ngIf="item.text" style="display: flex;flex-direction: column;width: 70%;">
+                  <h6 style="position: relative;width: 90%;">
+                    {{item.text}}</h6>
+
+
+
+                </div>
+
+                <div style="display: flex;flex-direction: column;width: 30%;">
+                  <ion-button (click)="removeAnnounce(item.docID)" style="width: 96%;" fill='outline' color="danger">
+                    REMOVE</ion-button>
+                </div>
+
+              </div>
 
             </div>
 
@@ -412,21 +468,21 @@
                 <div class="paddtop">
                   <ion-label class="ion-label" style="display: flex;justify-content: flex-start;">MESSAGE
                   </ion-label>
-                  <ion-input class="ion-input" [(ngModel)]="email" placeholder='Enter your message'></ion-input>
+                  <ion-input class="ion-input" [(ngModel)]="mess" placeholder='Enter your message'></ion-input>
                 </div>
 
                 <div class="paddtop">
-                  <ion-select placeholder="ANNOUNCEMENT FOR?" class="ion-input">
+                  <ion-select [(ngModel)]='cat' placeholder="ANNOUNCEMENT FOR?" class="ion-input">
 
-                    <ion-select-option *ngFor="let item of abc" value='{{item}}'>
+                    <ion-select-option interface='popover' *ngFor="let item of abc" value='{{item}}'>
                       {{item}}
                     </ion-select-option>
                   </ion-select>
                 </div>
 
                 <div class="paddtop">
-                  <ion-button style=" max-width: 50vh;" color="none" style="background-color: black;color: white;"
-                    expand='block'>
+                  <ion-button (click)="addAnnounce()" style=" max-width: 50vh;" color="none"
+                    style="background-color: black;color: white;" expand='block'>
                     ADD
                   </ion-button>
                   <div style="display: flex;">

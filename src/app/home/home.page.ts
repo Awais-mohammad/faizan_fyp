@@ -82,13 +82,16 @@ export class HomePage implements OnInit {
       else if (this.loginFor == 'TEACHER') {
         this.teacherLogin()
       }
-      else if (this.loginFor = 'ADMIN') {
+      else if (this.loginFor == 'ADMIN') {
         this.adminLogin()
 
       }
 
+      else if (this.loginFor == 'STUDENT') {
+        this.studentLogin()
+      }
       else {
-        this.Router.navigate(['testpage'])
+
       }
     }
 
@@ -116,6 +119,15 @@ export class HomePage implements OnInit {
     this.email = this.email.toLowerCase()
     this.firebaseauth.auth.signInWithEmailAndPassword(this.email, this.password).then(() => {
       this.Router.navigate(['admin'])
+    }).catch(er => {
+      alert(er.message)
+    })
+  }
+
+  studentLogin() {
+    this.email = this.email.toLowerCase()
+    this.firebaseauth.auth.signInWithEmailAndPassword(this.email, this.password).then(() => {
+      this.Router.navigate(['students-panel'])
     }).catch(er => {
       alert(er.message)
     })
