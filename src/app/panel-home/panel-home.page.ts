@@ -21,17 +21,19 @@ export class PanelHomePage implements OnInit {
     private firebaseauth: AngularFireAuth,
     public alertController: AlertController,
     private router: Router,
+
   ) {
     this.platform.ready().then(() => {
       this.width = platform.width()
     })
+    this.currentDiv = 'home'
   }
   width: number;
   description: string;
   amount: number;
   userID: string;
   userData: any;
-  currentDiv: string = 'home';
+  currentDiv: any;
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {

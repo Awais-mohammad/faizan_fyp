@@ -13,28 +13,31 @@ export class SplashscreenPage implements OnInit {
     private firebaseauth: AngularFireAuth,
     public router: Router,
   ) {
-    this.checkLogin()
+    setTimeout(() => {
+      this.router.navigate(['home'])
+    }, 2000);
+    //   this.checkLogin()
   }
 
   checkLogin() {
     const authsub = this.firebaseauth.authState.subscribe(user => {
-     if(user){
-      if (user.uid) {
-        setTimeout(() => {
-          this.router.navigate(['panel-home'])
-        }, 2000);
+      if (user) {
+        if (user.uid) {
+          setTimeout(() => {
+            this.router.navigate(['panel-home'])
+          }, 2000);
+        }
+        else {
+          setTimeout(() => {
+            this.router.navigate(['home'])
+          }, 2000);
+        }
       }
       else {
         setTimeout(() => {
           this.router.navigate(['home'])
         }, 2000);
       }
-     }
-     else{
-      setTimeout(() => {
-        this.router.navigate(['home'])
-      }, 2000);
-     }
     })
   }
   ngOnInit() {

@@ -20,9 +20,10 @@
   align-items: center;
 }
 .img {
-  object-fit: fill;
+  object-fit: cover;
   width: 100%;
 }
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 .card-parent {
   justify-content: center;
   align-items: center;
@@ -38,10 +39,15 @@ ion-card:hover {
 .card {
   background-color: blue;
   color: white;
+  height: 20em;
+  width: 20em;
 }
 .cententheight {
   text-align: center;
-  font-family: "Nanum Gothic", sans-serif;
+  position: relative;
+  font-size: 23px;
+  font-family: 'Open Sans', sans-serif;
+  padding: 10px;
 }
 
 .line-input {
@@ -148,8 +154,13 @@ ion-icon {
 .loginpage {
   height: 100%;
   width: 100%;
-  background-color: #f6f6f6;
-  background-image: linear-gradient(315deg, #f6f6f6 0%, #e9e9e9 74%);
+  background: #200122; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #6f0000, #200122); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #6f0000,
+    #200122
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 .login {
   font-family: "Coda Caption", sans-serif;
@@ -183,3 +194,13 @@ ion-icon {
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
 
 @import url("https://fonts.googleapis.com/css2?family=Coda+Caption:wght@800&display=swap");
+
+.bk {
+  background: #200122; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #6f0000, #200122); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #6f0000,
+    #200122
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
