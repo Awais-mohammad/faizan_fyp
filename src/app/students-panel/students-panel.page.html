@@ -1,0 +1,307 @@
+<ion-header>
+  <ion-toolbar color="none" style="background: white;">
+    <div class="headerparent">
+
+      <div class="header">
+        <div style="color: black;" class="name">
+          TheSmartSchool
+        </div>
+        <div class="items">
+
+          <div id="oho" style="display: flex;">
+            <ion-icon style="font-size: 50px;" name="person-circle-outline"></ion-icon>
+            <ion-label style="position: relative;font-size: 25px;top: 0.5em;">{{studentName}}</ion-label>
+            <ion-icon (click)="opnelist()" style="position: relative;top: 1.2em;" name="caret-down-outline"></ion-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+    <ion-row>
+      <!--
+        //////////////////////////////////////
+                SIDE MENU
+        /////////////////////////////////////        
+      -->
+      <ion-col size="3">
+
+        <div id="mySidenav" class="sidenav">
+
+          <div style="padding-left: 8px;padding-right: 8px;">
+
+            <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='home'" color="none">
+              <ion-label style="color: skyblue;font-weight: bold;" class="a ">
+                <ion-icon name="home"></ion-icon>
+                HOME
+              </ion-label>
+            </ion-item>
+
+            <ion-item (click)="gotoDiv('home')" *ngIf="currentDiv!='home'" color="none">
+              <ion-label class="a label">
+                <ion-icon name="home"></ion-icon>
+                HOME
+              </ion-label>
+            </ion-item>
+
+
+            <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='marks'" color="none">
+              <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                <ion-icon name="wallet"></ion-icon>
+                MARKS
+              </ion-label>
+            </ion-item>
+
+            <ion-item (click)="gotoDiv('marks')" *ngIf="currentDiv!='marks'" color="none">
+              <ion-label class="a label">
+                <ion-icon name="wallet"></ion-icon>
+                MARKS
+              </ion-label>
+            </ion-item>
+
+            <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='fees'" color="none">
+              <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                <ion-icon name="wallet"></ion-icon>
+                ATTENDENCE
+              </ion-label>
+            </ion-item>
+
+
+            <ion-item (click)="gotoDiv('attend')" *ngIf="currentDiv!='attend'" color="none">
+              <ion-label class="a label">
+                <ion-icon name="wallet"></ion-icon>
+                FEE
+              </ion-label>
+            </ion-item>
+
+            <ion-item style="border-bottom: 2px solid skyblue;" *ngIf="currentDiv=='attend'" color="none">
+              <ion-label style="color: skyblue;font-weight: bold;" class="a">
+                <ion-icon name="wallet"></ion-icon>
+                FEE
+              </ion-label>
+            </ion-item>
+
+
+            <ion-item (click)="gotoDiv('fees')" *ngIf="currentDiv!='fees'" color="none">
+              <ion-label class="a label">
+                <ion-icon name="wallet"></ion-icon>
+                ATTENDENCE
+              </ion-label>
+            </ion-item>
+
+            <ion-item (click)="logOut()" color="none">
+              <ion-label color="danger" style="color: red;" class=" label">
+                <ion-icon color="danger" name="log-out"></ion-icon>
+                LOGOUT
+              </ion-label>
+            </ion-item>
+
+
+
+          </div>
+        </div>
+
+      </ion-col>
+
+      <ion-col>
+
+        <div *ngIf="currentDiv=='home'">
+          <div style="text-align: center;max-width: 90%;position: relative;left: 3em;top: 20%;">
+
+            <div style="display: flex;justify-content: space-between;">
+              <h1 style="color: black;font-family: text;font-weight: bold;">ANNOUNCEMENTS</h1>
+
+            </div>
+
+
+            <div style="height: 2em;">
+
+            </div>
+
+            <div
+              style="height: 40em;width: 100%;border: 2px solid rgba(0, 0, 0, 0.514);border-radius: 25px;background: white;overflow-y: auto;">
+
+              <h1 style="color: black;font-family: text;text-align: center;">LISTED ANNOUNCEMENTS</h1>
+
+              <div style="display: flex;justify-content: center;align-items: center;text-align: center;">
+
+                <div style="width: 70%;color: black;">
+                  <ion-title
+                    style="color: black;font-weight: bold;font-family: Arial, Helvetica, sans-serif;text-align: center;">
+                    MESSAGE
+                  </ion-title>
+
+
+
+
+                </div>
+
+
+              </div>
+
+
+              <div *ngFor="let item of announce"
+                style="display: flex;justify-content: center;align-items: center;text-align: center;flex-direction: column;">
+
+                <div *ngIf="item.text" style="display: flex;flex-direction: column;width: 70%;">
+                  <h6 style="position: relative;width: 90%;text-align: center;">
+                    {{item.text}}</h6>
+
+
+
+                </div>
+                <div style="height: 2px;width: 100%;background-color: black;">
+
+                </div>
+
+
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+        <div *ngIf="currentDiv=='marks'">
+          <h1 style="color: black;font-family: text;font-weight: bold;">MARKS</h1>
+
+          <table *ngIf="marks">
+            <thead>
+              <tr>
+                <th>
+                  NAME
+                </th>
+
+                <th>
+                  REGNO
+                </th>
+
+                <th>
+                  SUBJECT
+                </th>
+                <th>
+                  MARKS </th>
+
+
+              </tr>
+            </thead>
+            <tbody *ngIf="marks">
+              <tr *ngFor="let i of marks" style="color: black;">
+                <td style="color: black;" data-column="Student Name">{{i.student}}</td>
+                <td style="color: black;" data-column="Student Name">{{i.regNo}}</td>
+
+                <td style="color: black;" data-column="Student Name">{{i.subject}}</td>
+
+                <td style="color: black;" data-column="Student Name">{{i.marks}}</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <div *ngIf="currentDiv=='fees'">
+          <h1 style="color: black;font-family: text;font-weight: bold;">ATTENDENCE</h1>
+
+          <table *ngIf="attend">
+            <thead>
+              <tr>
+                <th>
+                  NAME
+                </th>
+
+                <th>
+                  Date
+                </th>
+
+                <th>
+                  PRESENT
+                </th>
+                <th>
+                  ABSENT
+                </th>
+
+
+              </tr>
+            </thead>
+            <tbody *ngIf="attend">
+              <tr *ngFor="let i of attend" style="color: black;">
+                <td style="color: black;" data-column="Student Name">{{studentName}}</td>
+                <td style="color: black;" data-column="Student Name">{{i.date}}</td>
+
+                <td style="color: black;" data-column="Student Name">
+                  <div style="position: relative;" *ngFor="let item of i.presentees">
+                    <ion-label *ngIf="item==this.regNo" style="color: green;">YES</ion-label>
+                  </div>
+                </td>
+
+                <td style="color: black;" data-column="Student Name">
+                  <div style="position: relative;" *ngFor="let item of i.absentees">
+                    <ion-label *ngIf="item==this.regNo" style="color: red;">YES</ion-label>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <div *ngIf="currentDiv=='attend'">
+          <h1 style="color: black;font-family: text;font-weight: bold;">FEES</h1>
+
+          <table *ngIf="fee">
+            <thead>
+              <tr>
+                <th>
+                  NAME
+                </th>
+
+                <th>
+                  Due Date
+                </th>
+
+                <th>
+                  Due Month
+                </th>
+                <th>
+                  Status
+                </th>
+                <th>
+                  Amount
+                </th>
+
+              </tr>
+            </thead>
+            <tbody *ngIf="fee">
+              <tr *ngFor="let i of fee" style="color: black;">
+                <td style="color: black;" data-column="Student Name">{{studentName}}</td>
+                <td style="color: black;" data-column="Student Name">{{i.dueDate}}</td>
+                <td style="color: black;" data-column="Student Name">{{i.month}}</td>
+                <td style="color: black;" data-column="Student Name">{{i.status}}</td>
+                <td style="color: black;" data-column="Student Name">{{i.amount}}</td>
+
+              </tr>
+
+            </tbody>
+          </table>
+
+        </div>
+      </ion-col>
+
+
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+<div *ngIf="list" style="position:fixed;right:10px;top:70px;z-index:1000;">
+  <ion-item color="none" style="background:rgb(255, 255, 255);color:red;font-family: title;" mode="ios" button>
+    <ion-label (click)="logOut()">LOGOUT</ion-label>
+  </ion-item>
+</div>
